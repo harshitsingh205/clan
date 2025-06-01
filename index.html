@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narouni Rajput - Warriors of Narwargadh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=MedievalSharp&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+          :root {
+            --primary-color: #8B0000;
+            --secondary-color: #B8860B;
+            --accent-color: #654321;
+            --parchment: #F5E7C1;
+            --light-parchment: #F8F1E0;
+            --dark-text: #333;
+            --light-text: #555;
+            --highlight: #DAA520;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif', serif;
+            background-color: var(--light-parchment);
+            color: var(--dark-text);
+            background-image: url('https://www.transparenttextures.com/patterns/old-paper.png');
+            line-height: 1.7;
+            overflow-x: hidden;
+            padding-top: 80px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(245, 231, 193, 0.98);
+            color: var(--dark-text);
+            padding: 0.8rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--secondary-color);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .logo-img {
+            width: 70px;
+            height: 70px;
+            margin-right: 1rem;
+            background-image: url('logo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            filter: drop-shadow(0 0 3px rgba(0,0,0,0.3));
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo h1 {
+            font-family: 'Marcellus SC', serif;
+            color: var(--primary-color);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+            line-height: 1.2;
+            transition: all 0.3s ease;
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+        }
+
+        .slogan {
+            font-family: 'MedievalSharp', cursive;
+            color: var(--dark-text);
+            font-weight: bold;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            font-size: clamp(0.7rem, 2.5vw, 1rem);
+        }
+
+        /* Desktop Navigation */
+        .desktop-nav {
+            display: flex;
+        }
+
+        .desktop-nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .desktop-nav li {
+            margin-left: 1.5rem;
+            position: relative;
+        }
+
+        .desktop-nav a {
+            color: var(--dark-text);
+            text-decoration: none;
+            font-family: 'Marcellus SC', serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        /* Sword Button */
+        .sword-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 0.5rem;
+            position: relative;
+            width: 40px;
+            height: 40px;
+        }
+
+        .sword-icon {
+            width: 40px;
+            height: 40px;
+         margin: -10px;
+            background-image: url('Indian_Election_Symbol_Two_Swords_and_Shield-removebg-preview.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            filter: drop-shadow(0 0 2px rgba(0,0,0,0.5));
+            transition: all 0.3s ease;
+            animation: swordBlink 2s infinite;
+        }
+
+        @keyframes swordBlink {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        .sword-menu-btn.active .sword-icon {
+            transform: rotate(180deg);
+            animation: none;
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav-container {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background-color: var(--parchment);
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transform: translateY(-100%);
+            transition: transform 0.4s ease;
+            border-top: 1px solid rgba(101, 67, 33, 0.1);
+            border-bottom: 1px solid rgba(101, 67, 33, 0.1);
+        }
+
+        .mobile-nav-container.active {
+            transform: translateY(0);
+        }
+
+        .mobile-nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .mobile-nav li {
+            text-align: center;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 0.8rem;
+            color: var(--dark-text);
+            text-decoration: none;
+            font-family: 'Marcellus SC', serif;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            background-color: rgba(101, 67, 33, 0.05);
+            font-size: 0.9rem;
+        }
+
+        .mobile-nav a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .mobile-nav-arrow {
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 15px;
+            background-color: var(--parchment);
+            clip-path: polygon(50% 100%, 0 0, 100% 0);
+            border-left: 1px solid rgba(101, 67, 33, 0.1);
+            border-right: 1px solid rgba(101, 67, 33, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-container.active .mobile-nav-arrow {
+            transform: translateX(-50%) rotate(180deg);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .desktop-nav {
+                display: none;
+            }
+            
+            .sword-menu-btn {
+                display: block;
+            }
+            
+            body {
+                padding-top: 140px;
+            }
+
+            .logo h1 {
+                font-size: clamp(1.5rem, 5vw, 1.8rem);
+            }
+
+            .slogan {
+                font-size: clamp(0.8rem, 3vw, 1rem);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0.8rem 1.5rem;
+            }
+
+            .mobile-nav ul {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-container {
+                padding: 0.8rem 1rem;
+            }
+
+            .logo-img {
+                width: 40px;
+                height: 40px;
+                margin-right: 0.8rem;
+            }
+
+            .mobile-nav ul {
+                grid-template-columns: 1fr;
+            }
+
+            .sword-menu-btn {
+                width: 35px;
+                height: 35px;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background-image: url('warrior-rajput-caste-32130420.jpg.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Rest of your CSS styles... */
+        /* (Include all the previous CSS styles for other sections) */
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .desktop-nav {
+                display: none;
+            }
+            
+            .mobile-nav-toggle {
+                display: block;
+            }
+            
+            body {
+                padding-top: 140px; /* Space for header + mobile nav */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0.8rem 1.5rem;
+            }
+
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+
+            .slogan {
+                font-size: 0.9rem;
+            }
+
+            .mobile-nav ul {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-container {
+                padding: 0.8rem 1rem;
+            }
+
+            .logo-img {
+                width: 40px;
+                height: 40px;
+                margin-right: 0.8rem;
+            }
+
+            .mobile-nav ul {
+                grid-template-columns: 1fr;
+            }
+        }
+        .mobile-menu-btn:hover {
+            color: var(--primary-color);
+        }
+
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Marcellus SC', serif;
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            letter-spacing: 2px;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary-color);
+            font-family: 'Marcellus SC', serif;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+            color: var(--dark-text);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Ancient Warrior Decoration */
+        .warrior-decoration {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.15;
+            background-image: url('https://www.transparenttextures.com/patterns/sword-dhal-pattern.png');
+            background-size: 300px;
+            background-repeat: repeat;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        section h2 {
+            font-family: 'Marcellus SC', serif;
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--secondary-color), transparent);
+            bottom: -10px;
+            left: 20%;
+        }
+
+        section h3 {
+            font-family: 'Marcellus SC', serif;
+            color: var(--primary-color);
+            font-size: 1.6rem;
+            margin: 2rem 0 1rem;
+            border-bottom: 1px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            position: relative;
+        }
+
+        section h3::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: -2px;
+            left: 0;
+        }
+
+        /* Content Container */
+        .content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .scroll-content {
+            background-color: var(--parchment);
+            color: var(--dark-text);
+            padding: 2.5rem;
+            margin: 2rem auto;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            border: 1px solid rgba(101, 67, 33, 0.2);
+            background-image: url('https://www.transparenttextures.com/patterns/old-paper.png');
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+
+        .scroll-content.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .scroll-content p {
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .scroll-content ul {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+
+        .scroll-content li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .scroll-content li::before {
+            content: '•';
+            color: var(--secondary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        /* Media Section */
+        .media-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .media-card {
+            background-color: var(--parchment);
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(101, 67, 33, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .media-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .audio-container {
+            width: 100%;
+            padding: 1.5rem;
+            background-color: rgba(101, 67, 33, 0.05);
+            border-radius: 5px;
+        }
+
+        .media-caption {
+            padding: 1rem;
+            text-align: center;
+            font-family: 'Marcellus SC', serif;
+            color: var(--primary-color);
+            border-top: 1px solid rgba(101, 67, 33, 0.1);
+        }
+
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--secondary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--parchment);
+            border: 3px solid var(--secondary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .right::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: var(--parchment);
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(101, 67, 33, 0.2);
+        }
+
+        .timeline-content h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        .timeline-content p {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding: 1rem 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 220px;
+            border: 1px solid rgba(101, 67, 33, 0.3);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: white;
+            padding: 1rem;
+            font-family: 'Marcellus SC', serif;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--accent-color);
+            color: var(--light-parchment);
+            padding: 3rem 0 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .footer-logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+            background-image: url('logo.png'); /* Add your clan logo URL */
+            background-size: contain;
+            background-repeat: no-repeat;
+            filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(0,0,0,0.3));
+        }
+
+        .social-links {
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            color: var(--light-parchment);
+            font-size: 1.3rem;
+            margin: 0 0.7rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-slogan {
+            font-family: 'MedievalSharp', cursive;
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+            margin: 1rem 0;
+            font-weight: bold;
+        }
+
+        .copyright {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: rgba(248, 241, 224, 0.7);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            section h2 {
+                font-size: 2rem;
+            }
+            
+            section h3 {
+                font-size: 1.4rem;
+            }
+
+            .scroll-content {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0.8rem 1.5rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background-color: var(--parchment);
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                transition: right 0.3s ease;
+                z-index: 1000;
+                padding-top: 80px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+
+            nav.active {
+                right: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 1rem;
+                width: 100%;
+            }
+
+            nav ul li {
+                margin: 0;
+                border-bottom: 1px solid rgba(101, 67, 33, 0.1);
+            }
+
+            nav ul li a {
+                display: block;
+                padding: 1rem;
+                color: var(--dark-text);
+                font-size: 1.1rem;
+            }
+
+            .mobile-menu-close {
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
+                font-size: 1.5rem;
+                color: var(--dark-text);
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 18px;
+            }
+
+            .left::after, .right::after {
+                left: 18px;
+            }
+
+            .right {
+                left: 0%;
+            }
+
+            .timeline-content::before {
+                right: auto;
+                left: -15px;
+                border-left-color: transparent;
+                border-right-color: var(--parchment);
+            }
+
+            .media-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-container {
+                padding: 0.8rem 1rem;
+            }
+
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+
+            .slogan {
+                font-size: 0.9rem;
+            }
+
+            .logo-img {
+                width: 40px;
+                height: 40px;
+                margin-right: 0.8rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                line-height: 1.3;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+            
+            .section-title {
+                margin-bottom: 2rem;
+            }
+
+            .scroll-content {
+                padding: 1.5rem;
+                margin: 1rem 0;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-logo {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-img"></div>
+                <div class="logo-text">
+                    <h1>Narouni Rajput</h1>
+                    <div class="slogan">नरवरगढ़ से आए नरौनी, दो हाथ तलवार लिए</div>
+                </div>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#history">History</a></li>
+                    <li><a href="#lineage">Lineage</a></li>
+                    <li><a href="#media">Media</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Connect</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Sword Menu Button -->
+            <button class="sword-menu-btn" id="swordMenuBtn">
+                <div class="sword-icon"></div>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Panel -->
+    <div class="mobile-nav-container" id="mobileNavContainer">
+        <div class="mobile-nav">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#history">History</a></li>
+                <li><a href="#lineage">Lineage</a></li>
+                <li><a href="#media">Media</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Connect</a></li>
+            </ul>
+        </div>
+        <div class="mobile-nav-arrow"></div>
+    </div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Narouni Rajput</h1>
+            <p>नरवरगढ़ से आए नरौनी, दो हाथ तलवार लिए।
+रण में वीरता दिखाई, राजपूती शान लिए।
+परिहार वंश के सपूत हैं ये, इतिहास में नाम किए।
+न्याय, धर्म और शौर्य के रक्षक, सिर ऊँचा, दिल में जय लिए।</p>
+            <a href="#history" class="cta-button">Discover Our History</a>
+        </div>
+    </section>
+
+    <div class="warrior-decoration"></div>
+
+    <section id="history">
+        <div class="content-container">
+            <div class="section-title">
+                <h2>Narouni Rajput: A Historical Overview</h2>
+            </div>
+            <div class="scroll-content">
+                <p>The <strong>Narouni Rajputs</strong> are a distinguished sub-clan of the <strong>Parihar (Pratihar) Rajput</strong> dynasty, known for their valor, cultural richness, and deep-rooted legacy in the Indian subcontinent. Their ancestral origin is closely tied to the historic <strong>Narwar Fort</strong> (Narwargadh) located in present-day Madhya Pradesh, India. This fort and the surrounding region played a crucial role in shaping the history of Central India, especially during the medieval period.</p>
+                
+                <h3>Lineage and Clan Origins</h3>
+                <p>The Narouni Rajputs descend from the <strong>Parihar Rajputs</strong>, one of the four principal Agnivanshi Rajput clans (along with Chauhans, Solankis, and Parmars). The Parihars trace their mythological roots to <strong>Lakshmana</strong>, the brother of Lord Rama, who was said to be a protector or "pratihara." This divine protectorate association gave rise to the term <em>Pratihara</em> (later pronounced as <em>Parihar</em>).</p>
+                <p>The <strong>Narouni sub-clan</strong> of the Parihar Rajputs established itself primarily in the region surrounding <strong>Narwar</strong>, a strategically important location in the heart of India.</p>
+                
+                <h3>Narwar Fort: The Ancestral Seat</h3>
+                <p><strong>Narwar Fort</strong>, historically known as <em>Nalapura</em>, is believed to have been established by <strong>King Nala</strong>, a legendary king mentioned in the Mahabharata. In the early medieval period, the fort came under the control of the <strong>Parihar Rajputs</strong>, including the Narouni clan, who ruled the region and defended it against invasions.</p>
+                <p>The Narouni Rajputs governed from Narwar for several centuries, contributing to its development as a cultural and military stronghold.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="media">
+        <div class="content-container">
+            <div class="section-title">
+                <h2>Historical Media</h2>
+            </div>
+            <div class="scroll-content">
+                <div class="media-section">
+                    <div class="media-card">
+                        <div class="video-container">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/l5jLmLE5FaA?si=N6cxYhDGk61RG5hX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <div class="media-caption">Documentary on Narouni Rajput History</div>
+                    </div>
+                    <div class="media-card">
+                        <div class="video-container">
+                          <iframe width="560" height="315" src="https://www.youtube.com/embed/wTAkfB0v5XA?si=yEKUjAdY8v-QZpAx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <div class="media-caption">Narwar Fort: Ancestral Home</div>
+                    </div>
+                     <div class="media-card">
+                        <div class="video-container">
+                          <iframe width="560" height="315" src="https://www.youtube.com/embed/DYPZI2sFQv8?si=KpTxKeqhcUjBwk_I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <div class="media-caption">Documentary on Parihar Rajput History</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+         <div style="display:flex; justify-content:center; align-items:center; margin-top:20px;">
+    <audio controls style="width:90%; max-width:500px; border:2px solid #B8860B; border-radius:8px; padding:8px; background-color:#fff;">
+      <source src="पडहर र शन गन  pariharo ri shaan full song  ft kishor sirvi  New song 2021 Pratihar saab.mp3" type="audio/mpeg">
+      आपका ब्राउज़र ऑडियो टैग को सपोर्ट नहीं करता।
+    </audio>
+  </div>
+    </section>
+
+    <section id="lineage">
+        <div class="content-container">
+            <div class="section-title">
+                <h2>Lineage and Genealogy</h2>
+            </div>
+            <div class="scroll-content">
+                <div class="timeline">
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>Ancient Origins</h3>
+                            <p>Descendants of the Parihar (Pratihara) Rajputs, one of the four principal Agnivanshi clans</p>
+                            <p>Mythological connection to Lakshmana, brother of Lord Rama</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <h3>7th-8th Century</h3>
+                            <p>Establishment of Narouni identity around Narwar Fort (Narwargadh)</p>
+                            <p>Integration into the Pratihara Empire's defense system</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>10th-12th Century</h3>
+                            <p>Golden age of Narouni rule in Narwar region</p>
+                            <p>Construction of fortifications and temples</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <h3>13th-15th Century</h3>
+                            <p>Resistance against Delhi Sultanate</p>
+                            <p>Gradual migration from Narwar to other regions</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>16th-18th Century</h3>
+                            <p>Service in various Rajput kingdoms</p>
+                            <p>Participation in Mughal-Rajput conflicts</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <h3>19th Century</h3>
+                            <p>Service in princely states and British Indian Army</p>
+                            <p>Preservation of clan traditions during colonial period</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>20th-21st Century</h3>
+                            <p>Modern achievements in defense, politics, and business</p>
+                            <p>Revival of clan identity and heritage preservation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="content-container">
+            <div class="section-title">
+                <h2>Gallery of Narouni Heritage</h2>
+            </div>
+            <div class="scroll-content">
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <img src="ksp_4990.webp" alt="Narwar Fort">
+                        <div class="gallery-caption">Narwar Fort - The ancestral seat of Narouni Rajputs</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="6566a944c1c3779ea6eb3622_mustache.webp" alt="Rajput Warrior">
+                        <div class="gallery-caption">Traditional Rajput warrior attire</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="117993063.webp" alt="Rajput Sword">
+                        <div class="gallery-caption">Traditional Rajput weapons</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="M699895_The-Last-Stand-of-the-Rajputs-against-the-Muhammadans-in-1192-AD.jpg" alt="Narwar Fort View">
+                        <div class="gallery-caption">Panoramic view of Narwar Fort</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="rajpoots-1024x781.png" alt="Rajput Painting">
+                        <div class="gallery-caption">Historical Rajput painting</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="rajput.jpg" alt="Rajput Art">
+                        <div class="gallery-caption">Traditional Rajput miniature art</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-logo"></div>
+            <div class="footer-slogan">Narwargadh se aaye Narouni, doo hath talwar liye</div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="copyright">
+                © 2023 Narouni Rajput Heritage Foundation. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+  <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Sword menu button functionality
+            const swordMenuBtn = document.getElementById('swordMenuBtn');
+            const mobileNavContainer = document.getElementById('mobileNavContainer');
+            
+            swordMenuBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mobileNavContainer.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking on a link
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileNavContainer.classList.remove('active');
+                    swordMenuBtn.classList.remove('active');
+                });
+            });
+            
+            // Smooth scrolling for all links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 120,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.style.padding = '0.5rem 0';
+                    header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.padding = '0.8rem 0';
+                    header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+                }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Scroll reveal animation
+            const scrollElements = document.querySelectorAll('.scroll-content, .timeline-item');
+            
+            const elementInView = (el, dividend = 1) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+                );
+            };
+            
+            const displayScrollElement = (element) => {
+                element.classList.add('visible');
+            };
+            
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 1.25)) {
+                        displayScrollElement(el);
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', () => {
+                handleScrollAnimation();
+            });
+            
+            // Initialize animations on load
+            handleScrollAnimation();
+            
+            // Header scroll effect
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.style.padding = '0.5rem 0';
+                    header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.padding = '0.8rem 0';
+                    header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
