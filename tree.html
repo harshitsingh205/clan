@@ -3,9 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Narauni Family Tree - वंशवृक्ष</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Primary Meta Tags -->
+    <title>Narauni Family Tree - वंशवृक्ष | Genealogy & Lineage</title>
+    <meta name="title" content="Narauni Family Tree - वंशवृक्ष | Complete Genealogy">
+    <meta name="description" content="Explore the complete Narauni Rajput family tree (वंशवृक्ष). Comprehensive genealogy from Narwargadh to Narendrapur. Download family genealogy documents and understand the Narauni lineage and ancestors.">
+    <meta name="keywords" content="Narauni family tree, वंशवृक्ष, Rajput genealogy, vansavali, Narendrapur ancestry, family lineage, Narwargadh, genealogy, family history">
+    <meta name="author" content="Narauni Rajput Heritage Foundation">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="revisit-after" content="7 days">
+    <meta name="language" content="English, Hindi">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://clan-one.vercel.app/tree.html">
+    <meta property="og:title" content="Narauni Family Tree - Complete Genealogy">
+    <meta property="og:description" content="Comprehensive Narauni Rajput family tree showing complete lineage and genealogy from Narwargadh ancestors.">
+    <meta property="og:image" content="https://narauni-heritage.com/images/og-image.png">
+    <meta property="og:site_name" content="Narauni Rajput Heritage">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="hi_IN">
+    
+    <!-- Twitter / X Meta Tags -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://clan-one.vercel.app/tree.html">
+    <meta property="twitter:title" content="Narauni Family Tree - वंशवृक्ष">
+    <meta property="twitter:description" content="Complete family genealogy of Narauni Rajput clan with comprehensive lineage documentation.">
+    <meta property="twitter:image" content="https://narauni-heritage.com/images/og-image.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://clan-one.vercel.app/tree.html">
+    
+    <!-- Alternate Language URLs -->
+    <link rel="alternate" hreflang="en" href="https://clan-one.vercel.app/tree.html">
+    <link rel="alternate" hreflang="hi" href="https://clan-one.vercel.app/tree.html?lang=hi">
+    
+    <!-- Favicon Configuration -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#8B0000">
+    
+    <!-- Preconnect to External Resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    
     <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=MedievalSharp&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -870,6 +916,46 @@
             animation: slideInFromRight 0.5s ease;
         }
     </style>
+    
+    <!-- Structured Data - JSON-LD Schema for Genealogy -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Narauni Family Tree - वंशवृक्ष",
+        "description": "Complete family genealogy and lineage of Narauni Rajput clan",
+        "url": "https://narauni-heritage.com/tree.html",
+        "mainEntity": {
+            "@type": "Organization",
+            "name": "Narauni Rajput Heritage",
+            "alternateName": ["Narauni Clan", "Narendrapur Family"],
+            "description": "Narauni Rajput family genealogy and heritage documentation"
+        }
+    }
+    </script>
+    
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://narauni-heritage.com"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Family Tree",
+                "item": "https://narauni-heritage.com/tree.html"
+            }
+        ]
+    }
+    </script>
+   
 </head>
 <body>
     <!-- Professional Header -->
@@ -1152,36 +1238,52 @@
         let renderingPage = null;
         let pageCache = new Map(); // In-memory cache for rendered pages
         
-        // Local PDF embedded as base64 or stored locally
-        const localPdfPath = 'tree.pdf';
+        // Multiple local PDF path variations (for server compatibility)
+        const localPdfPaths = [
+            'tree.pdf',
+            '/tree.pdf',
+            './tree.pdf',
+            'clan-main/tree.pdf',
+            '../tree.pdf'
+        ];
+        
         const remotePdfUrls = [
             'https://harshitsingh205.github.io/pdf-hosting-narauni/tree.pdf'
         ];
 
-        // Fast PDF initialization with caching
+        // Fast PDF initialization with robust error handling
         async function initPDFViewer() {
             try {
                 console.log('🚀 Starting optimized PDF loading...');
                 const startTime = performance.now();
                 
-                // Try to load from local first (fastest)
+                // Try to load from local first with multiple path attempts
                 let arrayBuffer = await loadPDFFromLocal();
                 
-                // Fallback to remote with timeout
+                // If local fails, try with retry logic
                 if (!arrayBuffer) {
-                    arrayBuffer = await loadPDFFromRemote();
+                    arrayBuffer = await loadPDFFromRemoteWithRetry();
+                }
+                
+                // Final fallback: try loading without showing error
+                if (!arrayBuffer) {
+                    console.warn('⚠️ All attempts failed, retrying...');
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    arrayBuffer = await loadPDFFromRemoteWithRetry();
                 }
                 
                 if (!arrayBuffer) {
                     throw new Error('No PDF source available');
                 }
                 
-                // Fast document parsing
+                // Fast document parsing with optimizations
                 pdfDoc = await pdfjsLib.getDocument({ 
                     data: arrayBuffer,
                     cMapUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/',
                     cMapPacked: true,
-                    standardFontDataUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/standard_fonts/'
+                    standardFontDataUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/standard_fonts/',
+                    disableAutoFetch: false,
+                    disableStream: false
                 }).promise;
                 
                 document.getElementById('pageCount').textContent = pdfDoc.numPages;
@@ -1189,106 +1291,223 @@
                 document.getElementById('loadingIndicator').style.display = 'none';
                 
                 const loadTime = performance.now() - startTime;
-                console.log(`✅ PDF loaded in ${loadTime.toFixed(2)}ms`);
+                console.log(`✅ PDF loaded successfully in ${loadTime.toFixed(2)}ms`);
                 
                 // Render first page immediately
                 renderPage(1);
                 
-                // Pre-cache next 2 pages for smooth navigation
-                preCachePages([2, 3]);
+                // Pre-cache next 3 pages for ultra-smooth navigation
+                preCachePages([2, 3, 4]);
                 
             } catch (error) {
                 console.error('❌ PDF Loading Error:', error);
-                showPDFError();
-            }
-        }
-
-        // Load from local PDF file (fastest)
-        async function loadPDFFromLocal() {
-            try {
-                console.log('📁 Attempting local PDF load...');
-                const response = await fetch(localPdfPath, {
-                    method: 'GET',
-                    cache: 'force-cache'
-                });
                 
-                if (response.ok) {
-                    const arrayBuffer = await response.arrayBuffer();
-                    console.log('✅ Local PDF loaded');
-                    return arrayBuffer;
+                if (totalRetryAttempts < MAX_TOTAL_RETRIES) {
+                    // Keep showing loading message during retries
+                    console.log(`⏳ Retrying... (Attempt ${totalRetryAttempts + 1}/${MAX_TOTAL_RETRIES})`);
+                    showPDFError(); // Shows loading message
+                    
+                    // Wait and retry
+                    const delayMs = Math.pow(2, totalRetryAttempts) * 1500;
+                    setTimeout(() => {
+                        totalRetryAttempts++;
+                        initPDFViewer();
+                    }, delayMs);
+                } else {
+                    // Only after all retries, show error option
+                    initPDFViewerWithMaxRetry();
                 }
-            } catch (error) {
-                console.warn('⚠️ Local PDF unavailable:', error);
             }
-            return null;
         }
 
-        // Load from remote with timeout (secure fallback)
-        async function loadPDFFromRemote() {
-            for (let url of remotePdfUrls) {
+        // Update loading message without showing error
+        function updateLoadingMessage(message, duration) {
+            const textElement = document.querySelector('.pdf-loading-text');
+            if (textElement) {
+                textElement.textContent = message;
+                if (duration) {
+                    setTimeout(() => {
+                        textElement.textContent = 'দস्तावेज़ लोड हो रहा है...';
+                    }, duration);
+                }
+            }
+        }
+
+        // Load from local PDF with multiple path attempts
+        async function loadPDFFromLocal() {
+            for (let path of localPdfPaths) {
                 try {
-                    console.log('🌐 Attempting remote PDF load:', url);
+                    console.log(`📁 Attempting local PDF load from: ${path}`);
                     
                     const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 15000); // 15s timeout
+                    const timeoutId = setTimeout(() => controller.abort(), 5000);
                     
-                    const response = await fetch(url, {
+                    const response = await fetch(path, {
                         method: 'GET',
-                        headers: { 'Accept': 'application/pdf' },
-                        signal: controller.signal,
-                        cache: 'default'
+                        cache: 'force-cache',
+                        signal: controller.signal
                     });
                     
                     clearTimeout(timeoutId);
                     
-                    if (response.ok) {
+                    if (response.ok && response.status === 200) {
                         const arrayBuffer = await response.arrayBuffer();
-                        console.log('✅ Remote PDF loaded');
-                        return arrayBuffer;
+                        if (arrayBuffer && arrayBuffer.byteLength > 0) {
+                            console.log(`✅ Local PDF loaded from: ${path} (${(arrayBuffer.byteLength / 1024 / 1024).toFixed(2)}MB)`);
+                            return arrayBuffer;
+                        }
                     }
                 } catch (error) {
-                    console.warn(`⚠️ Remote load failed (${url}):`, error.message);
+                    console.warn(`⚠️ Local PDF not found at ${path}: ${error.message}`);
                     continue;
                 }
             }
             return null;
         }
 
-        // Pre-cache next pages for smooth navigation
-        async function preCachePages(pageNumbers) {
-            for (let pageNum of pageNumbers) {
-                if (pageNum <= pdfDoc.numPages && !pageCache.has(pageNum)) {
-                    try {
-                        const page = await pdfDoc.getPage(pageNum);
-                        pageCache.set(pageNum, page);
-                    } catch (error) {
-                        console.warn(`Failed to cache page ${pageNum}`);
+        // Load from remote with retry logic (no error shown immediately)
+        async function loadPDFFromRemoteWithRetry(retryCount = 0) {
+            const maxRetries = 2;
+            
+            for (let url of remotePdfUrls) {
+                try {
+                    console.log(`🌐 Attempting remote PDF load (attempt ${retryCount + 1}/${maxRetries + 1}): ${url}`);
+                    
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 20000); // 20s timeout
+                    
+                    const response = await fetch(url, {
+                        method: 'GET',
+                        headers: { 'Accept': 'application/pdf' },
+                        signal: controller.signal,
+                        cache: 'default',
+                        mode: 'cors',
+                        credentials: 'omit'
+                    });
+                    
+                    clearTimeout(timeoutId);
+                    
+                    if (response.ok && response.status === 200) {
+                        const arrayBuffer = await response.arrayBuffer();
+                        if (arrayBuffer && arrayBuffer.byteLength > 0) {
+                            console.log(`✅ Remote PDF loaded successfully (${(arrayBuffer.byteLength / 1024 / 1024).toFixed(2)}MB)`);
+                            return arrayBuffer;
+                        }
+                    }
+                } catch (error) {
+                    console.warn(`⚠️ Remote PDF attempt ${retryCount + 1} failed: ${error.message}`);
+                    
+                    // Retry with exponential backoff
+                    if (retryCount < maxRetries) {
+                        const delayMs = Math.pow(2, retryCount) * 1000;
+                        console.log(`⏳ Retrying in ${delayMs}ms...`);
+                        await new Promise(resolve => setTimeout(resolve, delayMs));
+                        return await loadPDFFromRemoteWithRetry(retryCount + 1);
                     }
                 }
             }
+            return null;
         }
 
-        // Show error message
+        // Pre-cache next pages for ultra-smooth navigation (non-blocking)
+        async function preCachePages(pageNumbers) {
+            // Use requestIdleCallback for non-blocking cache
+            if (window.requestIdleCallback) {
+                window.requestIdleCallback(async () => {
+                    for (let pageNum of pageNumbers) {
+                        if (pageNum <= pdfDoc.numPages && !pageCache.has(pageNum)) {
+                            try {
+                                const page = await pdfDoc.getPage(pageNum);
+                                pageCache.set(pageNum, page);
+                                console.log(`💾 Cached page ${pageNum}`);
+                            } catch (error) {
+                                console.warn(`Failed to cache page ${pageNum}`);
+                            }
+                        }
+                    }
+                });
+            } else {
+                // Fallback for older browsers
+                setTimeout(async () => {
+                    for (let pageNum of pageNumbers) {
+                        if (pageNum <= pdfDoc.numPages && !pageCache.has(pageNum)) {
+                            try {
+                                const page = await pdfDoc.getPage(pageNum);
+                                pageCache.set(pageNum, page);
+                            } catch (error) {
+                                console.warn(`Failed to cache page ${pageNum}`);
+                            }
+                        }
+                    }
+                }, 100);
+            }
+        }
+
+        // Show error message ONLY after all retries fail
         function showPDFError() {
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            if (loadingIndicator && loadingIndicator.style.display !== 'none') {
+                // Hide loading indicator
+                loadingIndicator.style.display = 'none';
+            }
+            
             const viewer = document.getElementById('pdfViewer');
             viewer.innerHTML = `
                 <div class="pdf-error">
-                    <i class="fas fa-exclamation-circle"></i>
+                    <i class="fas fa-file-pdf" style="font-size: 5rem; margin-bottom: 1.5rem; opacity: 0.5;"></i>
                     <div class="pdf-error-title">
-                        <span class="lang-content active" data-lang="hi">पीडीएफ लोड करने में समस्या</span>
-                        <span class="lang-content" data-lang="en">Unable to Load PDF</span>
+                        <span class="lang-content active" data-lang="hi">📄 वंशवृक्ष दस्तावेज़</span>
+                        <span class="lang-content" data-lang="en">📄 Family Tree Document</span>
                     </div>
-                    <div class="pdf-error-text">
-                        <span class="lang-content active" data-lang="hi">कृपया नीचे दिए गए विकल्प का उपयोग करें</span>
-                        <span class="lang-content" data-lang="en">Please use the option below</span>
+                    <div class="pdf-error-text" style="margin: 1.5rem 0; font-size: 1rem;">
+                        <span class="lang-content active" data-lang="hi">अभी लोड हो रहा है... कृपया कुछ क्षण प्रतीक्षा करें</span>
+                        <span class="lang-content" data-lang="en">Loading... Please wait a moment</span>
                     </div>
-                    <a href="https://harshitsingh205.github.io/pdf-hosting-narauni/" target="_blank" style="display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.9rem 1.6rem; background: linear-gradient(135deg, var(--primary-color), #A00000); color: white; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(139, 0, 0, 0.25); font-size: 0.95rem;">
-                        <i class="fas fa-external-link-alt"></i>
-                        <span class="lang-content active" data-lang="hi">ऑनलाइन पीडीएफ देखें</span>
-                        <span class="lang-content" data-lang="en">View PDF Online</span>
-                    </a>
+                    <div style="font-size: 3rem; animation: spin 2s linear infinite;">⏳</div>
                 </div>
             `;
+        }
+
+        // Maximum retry attempts before showing error
+        let totalRetryAttempts = 0;
+        const MAX_TOTAL_RETRIES = 5;
+
+        // Enhanced retry mechanism
+        async function initPDFViewerWithMaxRetry() {
+            if (totalRetryAttempts >= MAX_TOTAL_RETRIES) {
+                // Only after max retries, show the fallback option
+                const viewer = document.getElementById('pdfViewer');
+                const loadingIndicator = document.getElementById('loadingIndicator');
+                if (loadingIndicator) loadingIndicator.style.display = 'none';
+                
+                viewer.innerHTML = `
+                    <div class="pdf-error">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 4rem; margin-bottom: 1.5rem; color: var(--primary-color); opacity: 0.7;"></i>
+                        <div class="pdf-error-title" style="margin-bottom: 1rem;">
+                            <span class="lang-content active" data-lang="hi">⚠️ नेटवर्क में समस्या</span>
+                            <span class="lang-content" data-lang="en">⚠️ Network Issue</span>
+                        </div>
+                        <div class="pdf-error-text" style="margin-bottom: 1.5rem; font-size: 0.95rem;">
+                            <span class="lang-content active" data-lang="hi">दस्तावेज़ लोड नहीं हो सका। कृपया पृष्ठ को रीफ़्रेश करें या नीचे दिए विकल्प का उपयोग करें।</span>
+                            <span class="lang-content" data-lang="en">Document could not load. Please refresh the page or try the option below.</span>
+                        </div>
+                        <button onclick="location.reload()" style="display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.9rem 1.6rem; background: linear-gradient(135deg, var(--primary-color), #A00000); color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(139, 0, 0, 0.25); font-size: 0.95rem; margin-right: 0.8rem;">
+                            <i class="fas fa-redo"></i>
+                            <span class="lang-content active" data-lang="hi">पृष्ठ रीफ़्रेश करें</span>
+                            <span class="lang-content" data-lang="en">Refresh Page</span>
+                        </button>
+                        <a href="https://harshitsingh205.github.io/pdf-hosting-narauni/" target="_blank" style="display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.9rem 1.6rem; background: linear-gradient(135deg, var(--secondary-color), #9A7A0B); color: white; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(184, 134, 11, 0.25); font-size: 0.95rem; border: none; cursor: pointer;">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span class="lang-content active" data-lang="hi">ऑनलाइन देखें</span>
+                            <span class="lang-content" data-lang="en">View Online</span>
+                        </a>
+                    </div>
+                `;
+                return;
+            }
+            
+            totalRetryAttempts++;
+            await initPDFViewer();
         }
 
         // Fast, optimized page rendering
