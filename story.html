@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narauni Heritage Story - A Living Legacy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=MedievalSharp&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #8B0000;
+            --secondary-color: #B8860B;
+            --accent-color: #654321;
+            --parchment: #F5E7C1;
+            --light-parchment: #F8F1E0;
+            --dark-text: #333;
+            --light-text: #555;
+            --highlight: #DAA520;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif', serif;
+            background-color: var(--light-parchment);
+            color: var(--dark-text);
+            background-image: url('https://www.transparenttextures.com/patterns/old-paper.png');
+            line-height: 1.8;
+            overflow-x: hidden;
+            padding-top: 80px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(245, 231, 193, 0.98);
+            color: var(--dark-text);
+            padding: 0.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--secondary-color);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.6rem 1rem;
+            gap: 0.8rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 1001;
+            gap: 0.6rem;
+            flex-shrink: 0;
+        }
+
+        .logo h2 {
+            font-family: 'Marcellus SC', serif;
+            color: var(--primary-color);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        .logo p {
+            font-family: 'MedievalSharp', cursive;
+            color: var(--dark-text);
+            font-weight: bold;
+            white-space: nowrap;
+            font-size: clamp(0.6rem, 2vw, 0.75rem);
+            margin: 0;
+        }
+
+        /* Back Button */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.5rem 0.9rem;
+            background: linear-gradient(135deg, var(--primary-color), #A00000);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: 'Marcellus SC', serif;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
+            cursor: pointer;
+            min-height: 40px;
+            font-size: clamp(0.7rem, 2vw, 0.85rem);
+            box-shadow: 0 2px 6px rgba(139, 0, 0, 0.15);
+            flex-shrink: 0;
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(135deg, var(--secondary-color), #9A7A0B);
+            border-color: var(--secondary-color);
+            transform: translateX(-2px);
+            box-shadow: 0 3px 10px rgba(184, 134, 11, 0.25);
+        }
+
+        .back-btn:active {
+            transform: translateX(-1px) translateY(1px);
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            display: flex;
+            align-items: center;
+            min-width: auto;
+            flex-shrink: 0;
+        }
+
+        .lang-toggle-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 18px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Marcellus SC', serif;
+            transition: all 0.3s ease;
+            font-size: clamp(0.7rem, 1.8vw, 0.8rem);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            min-height: 40px;
+            min-width: 40px;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(139, 0, 0, 0.15);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .lang-toggle-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 3px 10px rgba(139, 0, 0, 0.25);
+        }
+
+        .lang-toggle-btn.active {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+        }
+
+        /* Chapter Navigation */
+        .chapter-nav {
+            background: linear-gradient(to right, var(--parchment), rgba(184, 134, 11, 0.05));
+            border-bottom: 3px solid var(--secondary-color);
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .chapter-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chapter-btn {
+            padding: 0.7rem 1.4rem;
+            background: linear-gradient(135deg, white, #F9F9F9);
+            border: 2px solid var(--secondary-color);
+            color: var(--dark-text);
+            cursor: pointer;
+            border-radius: 8px;
+            font-family: 'Marcellus SC', serif;
+            font-weight: bold;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chapter-btn:hover {
+            background: linear-gradient(135deg, var(--secondary-color), #D4A574);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(184, 134, 11, 0.3);
+        }
+
+        .chapter-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .chapter-btn.active {
+            background: linear-gradient(135deg, var(--primary-color), #B00000);
+            color: white;
+            box-shadow: 0 6px 16px rgba(139, 0, 0, 0.4);
+            transform: scale(1.05);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            height: 3px;
+            background-color: #EEE;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            z-index: 999;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Main Content Area */
+        .content-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Chapter Content */
+        .chapter-content {
+            display: none;
+            animation: fadeIn 0.6s ease;
+            opacity: 0;
+        }
+
+        .chapter-content.active {
+            display: block;
+            opacity: 1;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--parchment), rgba(184, 134, 11, 0.15));
+            border-radius: 10px;
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .chapter-number {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .chapter-title {
+            font-family: 'Marcellus SC', serif;
+            color: var(--primary-color);
+            font-size: clamp(1.8rem, 6vw, 2.4rem);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            line-height: 1.3;
+        }
+
+        .chapter-subtitle {
+            color: var(--light-text);
+            font-style: italic;
+            font-size: clamp(1rem, 3vw, 1.15rem);
+            margin-top: 0.5rem;
+            line-height: 1.5;
+        }
+
+        .scroll-content {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), var(--parchment));
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(184, 134, 11, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .scroll-content p {
+            margin-bottom: 1.5rem;
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            line-height: 1.9;
+            text-align: justify;
+            color: var(--dark-text);
+        }
+
+        .scroll-content h3 {
+            color: var(--primary-color);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: clamp(1.2rem, 4vw, 1.4rem);
+            font-family: 'Marcellus SC', serif;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .scroll-content ul {
+            margin: 1.5rem 0 1.5rem 2rem;
+            list-style: none;
+        }
+
+        .scroll-content li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.8;
+        }
+
+        .scroll-content li:before {
+            content: "🏰";
+            position: absolute;
+            left: 0;
+            font-size: 0.9rem;
+        }
+
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--accent-color);
+            color: var(--light-parchment);
+            padding: 3rem 0 1.5rem;
+            text-align: center;
+            margin-top: 4rem;
+            border-top: 3px solid var(--secondary-color);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-slogan {
+            font-family: 'Marcellus SC', serif;
+            font-size: 1rem;
+            color: var(--secondary-color);
+            margin: 1rem 0;
+            font-weight: bold;
+        }
+
+        .copyright {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: rgba(248, 241, 224, 0.8);
+        }
+
+        .social-links {
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            color: var(--light-parchment);
+            font-size: 1.3rem;
+            margin: 0 0.7rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 90px;
+            }
+
+            .header-container {
+                flex-direction: row;
+                gap: 0.5rem;
+                padding: 0.5rem 0.8rem;
+            }
+
+            .logo {
+                text-align: left;
+                flex: 1;
+                min-width: 0;
+                gap: 0.4rem;
+            }
+
+            .logo h2 {
+                font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+                letter-spacing: 0.3px;
+            }
+
+            .logo p {
+                font-size: clamp(0.55rem, 1.8vw, 0.7rem);
+                display: none;
+            }
+
+            .chapter-nav-container {
+                gap: 0.3rem;
+                padding: 0 0.6rem;
+            }
+
+            .chapter-btn {
+                padding: 0.4rem 0.6rem;
+                font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+            }
+
+            .content-wrapper {
+                padding: 1rem;
+            }
+
+            .scroll-content {
+                padding: 1.2rem;
+            }
+
+            .chapter-header {
+                padding: 1.5rem 0.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .back-btn {
+                padding: 0.4rem 0.7rem;
+                font-size: 0.7rem;
+                min-height: 36px;
+            }
+
+            .back-btn i {
+                display: none;
+            }
+
+            .lang-toggle-btn {
+                padding: 0.35rem 0.6rem;
+                font-size: 0.65rem;
+                min-height: 36px;
+                min-width: 36px;
+            }
+
+            .lang-toggle-btn i {
+                display: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            body {
+                padding-top: 80px;
+                font-size: 14px;
+            }
+
+            .header-container {
+                padding: 0.4rem 0.5rem;
+                gap: 0.4rem;
+            }
+
+            .logo {
+                flex: 1;
+                min-width: 0;
+                gap: 0.3rem;
+            }
+
+            .logo h2 {
+                font-size: clamp(0.9rem, 3vw, 1.1rem);
+                letter-spacing: 0.3px;
+            }
+
+            .logo p {
+                font-size: clamp(0.5rem, 1.5vw, 0.65rem);
+                display: none;
+            }
+
+            .back-btn {
+                padding: 0.35rem 0.6rem;
+                font-size: 0.65rem;
+                min-height: 36px;
+                min-width: auto;
+            }
+
+            .back-btn i {
+                display: none;
+            }
+
+            .back-btn span {
+                display: inline;
+            }
+
+            .lang-toggle-btn {
+                padding: 0.3rem 0.5rem;
+                font-size: 0.6rem;
+                min-height: 36px;
+                min-width: auto;
+            }
+
+            .lang-toggle-btn span {
+                display: inline;
+            }
+
+            .lang-toggle-btn i {
+                font-size: 0.85rem;
+                display: none;
+            }
+
+            .chapter-nav-container {
+                gap: 0.25rem;
+                padding: 0 0.4rem;
+            }
+
+            .chapter-btn {
+                padding: 0.35rem 0.4rem;
+                font-size: 0.6rem;
+                min-height: 36px;
+                flex: 1;
+            }
+
+            .chapter-title {
+                font-size: clamp(1.2rem, 5vw, 1.6rem);
+                margin-bottom: 0.6rem;
+            }
+
+            .chapter-subtitle {
+                font-size: clamp(0.8rem, 2vw, 0.9rem);
+            }
+
+            .content-wrapper {
+                padding: 0.7rem;
+            }
+
+            .scroll-content {
+                padding: 0.9rem;
+                border-radius: 6px;
+                margin-bottom: 1rem;
+            }
+
+            .scroll-content p {
+                font-size: clamp(0.85rem, 1.6vw, 0.9rem);
+                line-height: 1.7;
+                margin-bottom: 0.8rem;
+            }
+
+            .scroll-content h3 {
+                font-size: clamp(0.95rem, 3vw, 1.1rem);
+                margin-top: 1.2rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .chapter-header {
+                padding: 1.2rem 0.8rem;
+                margin-bottom: 1.2rem;
+                border-radius: 6px;
+            }
+
+            .chapter-number {
+                font-size: 0.85rem;
+                margin-bottom: 0.4rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .back-btn {
+            animation: slideInFromLeft 0.5s ease;
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .lang-toggle-btn {
+            animation: slideInFromRight 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <!-- Professional Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h2><i class="fas fa-book-open"></i> Narauni Heritage</h2>
+                <p>नरौनी विरासत</p>
+            </div>
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Home</span>
+            </a>
+            <div class="language-toggle">
+                <button class="lang-toggle-btn active" id="langToggleBtn">
+                    <i class="fas fa-globe"></i>
+                    <span id="langToggleText">हिंदी</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section id="heritage">
+    <div class="content-wrapper">
+        <div class="content-container">
+
+            <!-- Chapter Navigation -->
+            <div class="chapter-nav">
+                <div class="chapter-nav-container">
+                    <button class="chapter-btn active" data-chapter="1">Chapter 1: Introduction</button>
+                    <button class="chapter-btn" data-chapter="2">Chapter 2: Origins</button>
+                    <button class="chapter-btn" data-chapter="3">Chapter 3: Journey</button>
+                    <button class="chapter-btn" data-chapter="4">Chapter 4: Struggles</button>
+                    <button class="chapter-btn" data-chapter="5">Chapter 5: Legacies</button>
+                </div>
+            </div>
+
+            <!-- Chapter 1 -->
+            <div class="chapter-content active" data-chapter="1">
+                <div class="chapter-header">
+                    <div class="chapter-number">अध्याय 1 / Chapter 1</div>
+                    <h2 class="chapter-title">नरौनी की कहानी | The Narauni Story</h2>
+                    <p class="chapter-subtitle">अमर यादों की विरासत | Heritage of Immortal Memories</p>
+                </div>
+
+                <div class="scroll-content">
+                    <div class="lang-content active" data-lang="hi">
+                        <h3>कहानियों की विरासत</h3>
+                        <p>
+                            कुछ कहानियाँ इतिहास की पुस्तकों में दर्ज नहीं होतीं। वे न तो राजाओं के शासन की कथा होती हैं,
+                            और न ही युद्धों की विजयगाथा। ऐसी कहानियाँ गाँव की गलियों, मंदिरों की दीवारों और बुजुर्गों की स्मृतियों
+                            में जीवित रहती हैं। जैसा कि हमारे बुजुर्ग कहते हैं — “लिखा भले न हो, पर याद है।”
+                        </p>
+
+                        <h3>नरौनी की जीवित गाथा</h3>
+                        <p>
+                            नरेन्द्रपुर के नरावनी (नरौनी) की कथा भी ऐसी ही एक जीवित स्मृति है। यह किसी एक परिवार की नहीं,
+                            बल्कि उन लोगों की कहानी है जिन्होंने गढ़ों से निकलकर खेतों, जंगलों और दूरस्थ गाँवों तक अपनी पहचान बनाई।
+                            यह परंपरा पीढ़ी दर पीढ़ी संरक्षित होती आई है।
+                        </p>
+
+                        <h3>संघर्ष, आशा और सम्मान</h3>
+                        <p>
+                            यह विवरण केवल वंशावली नहीं है। इसमें विस्थापन का दुःख, संघर्ष की दृढ़ता, और नए जीवन की आशा समाहित है।
+                            यह उन मौखिक कथाओं को सम्मान देता है जिन्हें पूर्वजों ने स्मृति में संजोया और जिन्हें आज लिखित रूप दिया जा रहा है।
+                        </p>
+
+                        <h3>आने वाली पीढ़ियों के लिए</h3>
+                        <p>
+                            यहाँ संकलित कथाएँ अतीत का विवरण मात्र नहीं हैं, बल्कि आने वाली पीढ़ियों के लिए मार्गदर्शन हैं,
+                            ताकि वे जान सकें कि उनकी जड़ें कहाँ हैं और उनकी पहचान कैसे बनी।
+                        </p>
+
+                        <h3>प्रारंभ</h3>
+                        <p>
+                            यह केवल शुरुआत है — स्मृतियों को सहेजने, उन्हें समझने और आगे बढ़ाने की।
+                        </p>
+                    </div>
+
+                    <div class="lang-content" data-lang="en">
+                        <h3>Legacy of Stories</h3>
+                        <p>
+                            Some stories are never recorded in history books. They are neither tales of royal rule nor accounts
+                            of victorious wars. Such stories survive in village lanes, temple walls, and the memories of elders.
+                            As our elders often say, “It may not be written, but it is remembered.”
+                        </p>
+
+                        <h3>The Living Saga of Narauni</h3>
+                        <p>
+                            The story of the Narauni (Naravani) of Narendrapur is one such living memory.
+                            It is not merely the tale of a single family, but of people who moved from forts to farmlands,
+                            through forests, and into distant settlements — a legacy preserved across generations.
+                        </p>
+
+                        <h3>Struggle, Hope, and Honor</h3>
+                        <p>
+                            This narrative is more than genealogy. It reflects displacement, resilience,
+                            and the hope of rebuilding life anew. It honors oral traditions preserved by ancestors
+                            and now formally documented.
+                        </p>
+
+                        <h3>For Future Generations</h3>
+                        <p>
+                            These narratives are not limited to the past; they serve as guidance for future generations,
+                            helping them understand their roots and lineage.
+                        </p>
+
+                        <h3>The Beginning</h3>
+                        <p>
+                            This marks only the beginning — of preservation, understanding, and continuity.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 2: Origins -->
+<div class="chapter-content" data-chapter="2">
+    <div class="chapter-header">
+        <div class="chapter-number">अध्याय 2 / Chapter 2</div>
+        <h2 class="chapter-title">उत्पत्ति और वंश | Origins and Narauni Lineage</h2>
+        <p class="chapter-subtitle">नरवरगढ़ से नरौनी तक | From Narwar to Narauni</p>
+    </div>
+
+    <div class="scroll-content">
+        <div class="lang-content active" data-lang="hi">
+            <h3>शुरुआत और पहचान</h3>
+            <p>
+                प्रत्येक वंश की एक ऐतिहासिक शुरुआत होती है—एक ऐसा बिंदु जहाँ परंपरा,
+                स्मृति और पहचान एक साथ आकार लेती हैं। नरौनी राजपूत वंश की उत्पत्ति
+                वर्तमान मध्यप्रदेश के प्रसिद्ध ऐतिहासिक किले नरवरगढ़ से मानी जाती है।
+                यह किला वीरता, प्रशासनिक शक्ति और सांस्कृतिक गरिमा का प्रतीक रहा है।
+            </p>
+
+            <h3>नाम और स्मृति</h3>
+            <p>
+                इसी किले की परिधि में निवास करने वाले राजपूत योद्धा कालांतर में
+                “नरावनी” कहलाए, जिसका स्थानीय उच्चारण “नरौनी” हुआ।
+                यह नाम केवल निवास स्थान का संकेत नहीं, बल्कि उस गढ़,
+                भूमि और जीवनशैली की स्मृति है जिसने इस वंश को आकार दिया।
+            </p>
+
+            <h3>वंश और गोत्र</h3>
+            <p>
+                पारंपरिक स्रोतों के अनुसार नरौनी वंश को “श्रीनेत्र वंशम्” की एक शाखा
+                माना जाता है, जो नीति, दूरदृष्टि और मर्यादा के लिए प्रसिद्ध रहा है।
+                इस वंश में मुख्यतः कश्यप गोत्र पाया जाता है, जबकि कुछ शाखाएँ
+                वशिष्ठ अथवा भारद्वाज गोत्र से भी संबद्ध मानी जाती हैं।
+            </p>
+        </div>
+
+        <div class="lang-content" data-lang="en">
+            <h3>Origins and Identity</h3>
+            <p>
+                Every lineage has a historical beginning—a point where tradition,
+                memory, and identity take form. The Narauni Rajput clan traces its
+                origins to the historic Narwar Fort in present-day Madhya Pradesh,
+                a stronghold symbolizing valor, governance, and cultural dignity.
+            </p>
+
+            <h3>Name and Memory</h3>
+            <p>
+                The Rajput warriors residing around this fort later came to be
+                known as “Naravani,” which evolved locally into “Narauni.”
+                This name represents not merely residence, but the enduring memory
+                of the fort, the land, and the way of life that shaped the clan.
+            </p>
+
+            <h3>Lineage and Gotra</h3>
+            <p>
+                Traditional accounts identify the Narauni clan as a branch of the
+                “Shrineta Vanshm,” known for foresight, governance, and adherence
+                to honor. The clan primarily belongs to the Kashyap gotra,
+                with some branches associated with the Vashisht or Bharadvaj gotras.
+            </p>
+        </div>
+    </div>
+</div>
+<!-- Chapter 3: Journey -->
+<div class="chapter-content" data-chapter="3">
+    <div class="chapter-header">
+        <div class="chapter-number">अध्याय 3 / Chapter 3</div>
+        <h2 class="chapter-title">महान यात्रा | The Great Journey</h2>
+        <p class="chapter-subtitle">मध्यप्रदेश से बिहार तक | From Madhya Pradesh to Bihar</p>
+    </div>
+
+    <div class="scroll-content">
+        <!-- Hindi Version -->
+        <div class="lang-content active" data-lang="hi">
+            <h3>प्रस्थान और उद्देश्य</h3>
+        <p>
+            नरौनी वंश का इतिहास केवल तलवार और सत्ता की कहानी नहीं है,
+            बल्कि यह विवेक, धैर्य और दूरदृष्टि की भी गाथा है।
+            जब चारों ओर राजनीतिक अस्थिरता, संघर्ष और असुरक्षा का वातावरण था,
+            तब वंश के लोगों ने यह समझ लिया कि केवल वीरता ही नहीं,
+            बल्कि सही समय पर सही दिशा में बढ़ना भी अस्तित्व के लिए आवश्यक है।
+        </p>
+
+        <h3>आस्था और रणनीति का संगम</h3>
+        <p>
+            उस युग में तीर्थयात्रा केवल धार्मिक कर्तव्य नहीं थी।
+            यह सुरक्षित मार्गों की खोज, नए क्षेत्रों की जानकारी
+            और सामाजिक संपर्क स्थापित करने का माध्यम भी थी।
+            नरौनी वंश ने आस्था को आधार बनाकर
+            अपने भविष्य की दिशा तय की—जहाँ विश्वास और विवेक एक साथ चलते थे।
+        </p>
+
+        <h3>पर्वतीय मार्ग और तपस्या</h3>
+        <p>
+            पर्वतीय रास्तों से गुजरती यह यात्रा केवल शारीरिक नहीं,
+            बल्कि मानसिक तपस्या भी थी।
+            कठिन चढ़ाइयाँ, अनिश्चित मौसम और सीमित साधनों के बीच
+            सामूहिक अनुशासन और एक-दूसरे पर भरोसा ही
+            इस यात्रा की सबसे बड़ी शक्ति बना।
+        </p>
+
+        <h3>स्थायी बसावट और पहचान</h3>
+        <p>
+            समय के साथ यह स्पष्ट होने लगा कि अब यात्रा का उद्देश्य
+            केवल आगे बढ़ना नहीं, बल्कि कहीं टिकना भी है।
+            जल, उपजाऊ भूमि और सामाजिक सामंजस्य को ध्यान में रखते हुए
+            ऐसे स्थानों का चयन किया गया
+            जहाँ आने वाली पीढ़ियाँ सम्मान और सुरक्षा के साथ जीवन जी सकें।
+        </p>
+
+        <h3>लोकस्मृति में नरौनी वंश</h3>
+        <p>
+            यह कालखंड आज भी लोककथाओं और स्मृतियों में जीवित है।
+            बुजुर्गों की कथाओं, पारिवारिक परंपराओं और सांस्कृतिक संकेतों के माध्यम से
+            यह इतिहास पीढ़ी-दर-पीढ़ी आगे बढ़ता रहा,
+            जिसने वंश की सामूहिक पहचान को मजबूत किया।
+        </p>
+
+        <h3>वंशीधर राय और वंश विस्तार</h3>
+        <p>
+            वंशीधर राय के नेतृत्व में नरौनी वंश ने
+            केवल बसावट ही नहीं, बल्कि सामाजिक संरचना भी विकसित की।
+            आपसी सहयोग, पारिवारिक अनुशासन और स्थानीय समाज से संवाद ने
+            वंश को स्थायित्व प्रदान किया,
+            जिससे भविष्य की पीढ़ियों के लिए मजबूत नींव तैयार हुई।
+        </p>
+
+    </div>
+
+    <!-- English -->
+    <div class="lang-content" data-lang="en">
+
+        <h3>Departure and Purpose</h3>
+        <p>
+            The history of the Narauni lineage is not merely a tale of swords and power,
+            but also one of wisdom, patience, and foresight.
+            Amid political instability and insecurity,
+            the community realized that survival required not only bravery,
+            but the ability to choose the right direction at the right time.
+        </p>
+
+        <h3>A Convergence of Faith and Strategy</h3>
+        <p>
+            Pilgrimage in that era was more than religious duty.
+            It enabled safe travel, access to new regions,
+            and the formation of social networks.
+            Faith became the guiding force through which strategy was shaped.
+        </p>
+
+        <h3>Mountain Routes and Endurance</h3>
+        <p>
+            The mountainous journey tested not just physical endurance,
+            but mental resilience.
+            Harsh terrain, uncertain weather, and limited resources
+            made unity and collective discipline the greatest strength of the travelers.
+        </p>
+
+        <h3>Permanent Settlement and Identity</h3>
+        <p>
+            Gradually, the purpose of movement shifted from travel to settlement.
+            Fertile land, water sources, and social harmony guided the choice
+            of locations where future generations could live with dignity and security.
+        </p>
+
+        <h3>Narauni in Oral Tradition</h3>
+        <p>
+            This phase remains alive through folklore and oral memory.
+            Stories passed down through generations
+            reinforced a shared identity and historical consciousness.
+        </p>
+
+        <h3>Vanshidhar Ray and Expansion of the Lineage</h3>
+        <p>
+            Under the leadership of Vanshidhar Ray,
+            the lineage developed social structure and stability.
+            Cooperation, discipline, and dialogue with local communities
+            laid a strong foundation for continuity and growth.
+        </p>
+        </div>
+    </div>
+</div>
+
+<!-- Chapter 4: Struggles -->
+<div class="chapter-content" data-chapter="4">
+    <div class="chapter-header">
+        <div class="chapter-number">अध्याय 4 / Chapter 4</div>
+        <h2 class="chapter-title">संघर्ष और साहस | Struggles and Courage</h2>
+        <p class="chapter-subtitle">न्याय के लिए प्रतिरोध | Resistance for Justice</p>
+    </div>
+
+    <div class="scroll-content">
+        <div class="lang-content active" data-lang="hi">
+           <!-- Hindi -->
+        <h3>संघर्ष का ऐतिहासिक संदर्भ</h3>
+        <p>
+            यह वह समय था जब औपनिवेशिक शासन का बोझ
+            गाँवों और किसानों पर लगातार बढ़ता जा रहा था।
+            कर, दमन और प्रशासनिक अन्याय ने
+            ग्रामीण जीवन को असहनीय बना दिया था।
+        </p>
+
+        <h3>अन्यायपूर्ण कर व्यवस्था का विरोध</h3>
+        <p>
+            नरौनी वंश ने चुपचाप अत्याचार सहने के बजाय
+            विरोध का मार्ग चुना।
+            यह संघर्ष केवल करों के विरुद्ध नहीं था,
+            बल्कि आत्मसम्मान और स्वाभिमान की रक्षा का संकल्प था।
+        </p>
+
+        <h3>आसांव गढ़ पर आक्रमण और प्रतिकार</h3>
+        <p>
+            जब शोषण की सीमा पार हो गई,
+            तब प्रतिकार अनिवार्य हो गया।
+            आसांव गढ़ पर आक्रमण
+            सत्ता के विरुद्ध संगठित प्रतिरोध का प्रतीक बना,
+            जिसने भय के वातावरण को चुनौती दी।
+        </p>
+
+        <h3>दीरगा राय और सशस्त्र प्रतिरोध</h3>
+        <p>
+            दीरगा राय ने इस संघर्ष में नेतृत्व संभाला।
+            सीमित संसाधनों के बावजूद
+            उन्होंने साहस, रणनीति और आत्मबल का परिचय दिया।
+            यह युद्ध संख्या का नहीं,
+            बल्कि संकल्प और साहस का था।
+        </p>
+
+        <h3>विश्वासघात और कालापानी</h3>
+        <p>
+            दुर्भाग्यवश यह संघर्ष विश्वासघात की भेंट चढ़ गया।
+            दीरगा राय को पकड़कर
+            कालापानी भेज दिया गया—
+            जो औपनिवेशिक दमन का सबसे कठोर और अमानवीय दंड था।
+        </p>
+
+        <h3>बलिदान की स्थायी विरासत</h3>
+        <p>
+            उनका अंत शारीरिक रूप से हुआ,
+            किंतु उनका बलिदान अमर बन गया।
+            यह अध्याय आने वाली पीढ़ियों को यह सिखाता है
+            कि स्वतंत्रता और सम्मान
+            त्याग और साहस से ही प्राप्त होते हैं।
+        </p>
+
+    </div>
+
+    <!-- English -->
+    <div class="lang-content" data-lang="en">
+
+        <h3>Historical Context of Resistance</h3>
+        <p>
+            This was a time when colonial pressure on villages and farmers intensified.
+            Taxes, oppression, and administrative injustice
+            made rural life increasingly unbearable.
+        </p>
+
+        <h3>Opposition to Unjust Taxation</h3>
+        <p>
+            Instead of silent submission,
+            the Narauni lineage chose resistance.
+            This struggle was not merely economic,
+            but a defense of dignity and self-respect.
+        </p>
+
+        <h3>Attack on Asao Fort and Retaliation</h3>
+        <p>
+            When oppression crossed all limits,
+            retaliation became inevitable.
+            The attack on Asao Fort symbolized
+            organized resistance against unjust authority.
+        </p>
+
+        <h3>Dirga Ray and Armed Resistance</h3>
+        <p>
+            Dirga Ray emerged as a leader during this struggle.
+            With limited resources,
+            he demonstrated courage, strategy, and inner strength.
+            It was a battle of resolve rather than numbers.
+        </p>
+
+        <h3>Betrayal and Transportation to Andaman</h3>
+        <p>
+            Tragically, the movement ended in betrayal.
+            Dirga Ray was captured and sent to the Andaman penal colony,
+            the harshest punishment under colonial rule.
+        </p>
+
+        <h3>An Enduring Legacy of Sacrifice</h3>
+        <p>
+            Though his life ended,
+            his sacrifice became immortal.
+            This chapter continues to inspire future generations
+            to value courage, resistance, and dignity.
+        </p>
+        </div>
+    </div>
+</div>
+<!-- Chapter 5: Legacies -->
+<div class="chapter-content" data-chapter="5">
+    <div class="chapter-header">
+        <div class="chapter-number">अध्याय 5 / Chapter 5</div>
+        <h2 class="chapter-title">उल्लेखनीय योगदानकर्ता | Notable Contributors</h2>
+        <p class="chapter-subtitle">विरासत की मशाल | The Torch of Heritage</p>
+    </div>
+
+    <div class="scroll-content">
+       <div class="lang-content active" data-lang="hi">
+    <h3>गौरवशाली योगदानकर्ता</h3>
+    <p>
+        नरौनी वंश की परंपरा केवल इतिहास तक सीमित नहीं रही, बल्कि प्रत्येक पीढ़ी में
+        ऐसे व्यक्तित्व उत्पन्न हुए जिन्होंने अपने कर्म, स्वभाव और विचारों से
+        गाँव, समाज और संस्कृति को दिशा प्रदान की।
+    </p>
+
+    <ul>
+        <li><strong>शक्ति राय:</strong> नरेन्द्रपुर में गढ़ का निर्माण कर नरौनी समुदाय की स्थायी स्थापना एवं विस्तार किया।</li>
+
+        <li><strong>सीताराम सिंह:</strong> नरेन्द्रपुर में शिव मंदिर, अन्य मंदिरों एवं पोखरों का निर्माण कराया, जिससे गाँव की धार्मिक और सामाजिक विरासत सुदृढ़ हुई।</li>
+
+        <li><strong>शिव कुमार सिंह:</strong> संगीत के उपासक थे। उनकी संगीत सभाएँ गाँव के सांस्कृतिक जीवन का अभिन्न अंग बनीं।</li>
+
+        <li><strong>कृष्ण कुमार सिंह:</strong> नरेन्द्रपुर के प्रतिष्ठित आयुर्वेदाचार्य थे। भ्रमण और तीर्थयात्रा के विशेष शौकीन रहे तथा बद्रीनाथ धाम की यात्रा की।</li>
+
+        <li><strong>सूबा सिंह:</strong> गाँव की प्रत्येक भूमि की सूक्ष्म जानकारी रखने वाले कुशल अमीन थे, जिनकी दक्षता से भूमि प्रशासन सुदृढ़ हुआ।</li>
+
+        <li><strong>राजनंदन सिंह (बबुआ काका):</strong> सहयोगी स्वभाव एवं कृषि-प्रेम के लिए स्मरण किए जाते हैं।</li>
+
+        <li><strong>पारसनाय सिंह:</strong> स्वतंत्रता संग्राम सेनानी, जिन्होंने 1942 के आंदोलन में सक्रिय भागीदारी कर ग्रामीण चेतना को जागृत किया।</li>
+
+        <li><strong>राजनारायण सिंह:</strong> नरेन्द्रपुर के प्रथम पोस्टमास्टर रहे। डाक व्यवस्था के माध्यम से गाँव को बाहरी संसार से जोड़ा।</li>
+
+        <li><strong>बच्चू सिंह:</strong> तीव्र स्वभाव और गहरी राजनीतिक समझ के लिए जाने गए। ग्रामीण राजनीति में निर्णायक भूमिका निभाई।</li>
+
+        <li><strong>शंभू प्रसाद सिंह:</strong> उच्च न्यायपालिका से जुड़े विद्वान, जिनकी ऐतिहासिक कृतियाँ वंश की धरोहर बनीं।</li>
+
+        <li><strong>दशरथ सिंह:</strong> गंभीर स्वभाव के साथ आंतरिक राजनीति और रणनीतिक दांव-पेंच के कुशल ज्ञाता।</li>
+
+        <li><strong>विश्वनाथ सिंह:</strong> सरल, सहज और अत्यंत मिलनसार व्यक्तित्व के धनी।</li>
+
+        <li><strong>रुद्रप्रताप सिंह:</strong> नरेन्द्रपुर पंचायत के वर्षों तक निर्विरोध मुखिया रहे; सेवा और समरसता की मिसाल बने।</li>
+
+        <li><strong>उमाकांत प्रसाद सिंह:</strong> भारत छोड़ो आंदोलन के शहीद। उनका बलिदान आज भी गाँव की आत्मा में जीवित है।</li>
+
+        <li><strong>सूर्य सिंह:</strong> हँसमुख, विनोदी एवं प्रभावशाली व्यक्तित्व; सामाजिक जीवन में सदैव सक्रिय।</li>
+
+        <li><strong>समुंद्र सिंह:</strong> सौम्य, विनम्र और उत्सवप्रिय; होली गीत गायन में विशेष निपुण।</li>
+
+        <li><strong>मुत्री सिंह:</strong> पटना उच्च न्यायालय में कार्यरत रहे; सरलता और विश्वसनीयता के लिए सम्मानित।</li>
+
+        <li><strong>रामाधार सिंह:</strong> अंग्रेज़ी भाषा में दक्ष, रंगमंच प्रेमी और गांधीवादी जीवनशैली के अनुयायी।</li>
+
+        <li><strong>डॉ. फणीश सिंह:</strong> साहित्य, इतिहास और शिक्षा के समर्पित साधक; सांस्कृतिक उत्थान में अग्रणी।</li>
+
+        <li><strong>श्यामधाता सिंह:</strong> ठेकेदारी पेशे के साथ सांस्कृतिक गतिविधियों—विशेषतः नाटक—में सक्रिय भागीदारी।</li>
+
+        <li><strong>ध्रुप सिंह:</strong> ऊर्जावान, सामाजिक समरसता के प्रवर्तक; खेल और नाटक में समान रूप से सक्रिय।</li>
+
+        <li><strong>चंद्रशेखर सिंह:</strong> ग्रामीण डॉक्टर के रूप में जीवनपर्यंत सेवा; सभी के प्रिय।</li>
+
+        <li><strong>सूर्यशेखर सिंह:</strong> सरल, विनोदी और मिलनसार व्यक्तित्व के कारण लोकप्रिय।</li>
+
+        <li><strong>राघवेन्द्र सिंह:</strong> सेवा और संवाद की भावना से प्रेरित; पारस बाबू के अनुयायी।</li>
+
+        <li><strong>कमलेन्द्र कुमार सिंह:</strong> शिक्षाविद एवं इतिहास-प्रेमी; गाँव की स्मृतियों के संरक्षक।</li>
+
+        <li><strong>माधवेन्द्र कुमार सिंह:</strong> व्यवसाय में निपुण; सांस्कृतिक गतिविधियों के प्रेरक, अत्यंत सौम्य स्वभाव।</li>
+
+        <li><strong>चन्द्रकीर्ति सिंह:</strong> शहीद पुत्र, सृजनशील और गांधीवादी सोच से प्रेरित सांस्कृतिक नेतृत्वकर्ता।</li>
+
+        <li><strong>मणिश प्रसाद सिंह:</strong> अधिवक्ता एवं समाजसेवी; शिक्षा और सामाजिक चेतना के लिए सतत कार्यरत।</li>
+
+        <li><strong>कैप्टन हरीकीर्ति सिंह:</strong> सेवानिवृत्त सेना अधिकारी; गाँव से गहरा जुड़ाव और मिलनसार व्यक्तित्व।</li>
+
+        <li><strong>शिवकीर्ति सिंह:</strong> सुप्रीम कोर्ट के पूर्व न्यायाधीश; न्यायिक यात्रा वंश और क्षेत्र के लिए प्रेरणास्रोत।</li>
+    </ul>
+
+    <h3>विरासत की मशाल</h3>
+    <p>
+        यह अध्याय उन सभी व्यक्तियों को नमन है जिन्होंने विरासत को स्मृति नहीं,
+        बल्कि उत्तरदायित्व बनाया—और आने वाली पीढ़ियों के लिए मार्ग प्रशस्त किया।
+    </p>
+</div>
+<div class="lang-content active" data-lang="en">
+
+            <h3>Distinguished Contributors</h3>
+            <p>
+                The Narauni lineage is not limited to historical records; each generation produced
+                remarkable individuals whose deeds, character, and vision shaped their village,
+                society, and culture.
+            </p>
+
+            <ul>
+                <li><strong>Shakti Rai:</strong> Built the fort in Narendrapur and established the Narauni community permanently, expanding its presence.</li>
+                <li><strong>Sitaram Singh:</strong> Constructed the Shiva temple, other temples, and ponds in Narendrapur, strengthening the village's religious and social heritage.</li>
+                <li><strong>Shiv Kumar Singh:</strong> A devotee of music; his musical gatherings became an integral part of the village's cultural life.</li>
+                <li><strong>Krishna Kumar Singh:</strong> Renowned Ayurvedic physician of Narendrapur; avid traveler and pilgrim, visited Badrinath Dham.</li>
+                <li><strong>Suba Singh:</strong> Skilled land surveyor with detailed knowledge of village lands, improving land administration efficiency.</li>
+                <li><strong>Rajnandan Singh (Babua Kaka):</strong> Remembered for his cooperative nature and love for agriculture.</li>
+                <li><strong>Parsanay Singh:</strong> Freedom fighter actively involved in the 1942 movement, awakening rural consciousness.</li>
+                <li><strong>Rajanarayan Singh:</strong> First postmaster of Narendrapur; connected the village with the outside world through postal services.</li>
+                <li><strong>Bacchu Singh:</strong> Known for his sharp mind and political acumen; played a decisive role in local politics.</li>
+                <li><strong>Shambhu Prasad Singh:</strong> Scholar linked to the judiciary; his historical works became part of the clan’s heritage.</li>
+                <li><strong>Dashrath Singh:</strong> Strategist with a serious temperament, expert in internal politics and planning.</li>
+                <li><strong>Vishwanath Singh:</strong> Simple, approachable, and exceptionally sociable personality.</li>
+                <li><strong>Rudrapratap Singh:</strong> Served as unopposed village head for many years; exemplified service and harmony.</li>
+                <li><strong>Umakant Prasad Singh:</strong> Martyr of the Quit India Movement; his sacrifice remains alive in the village’s spirit.</li>
+                <li><strong>Surya Singh:</strong> Cheerful, humorous, influential, and socially active personality.</li>
+                <li><strong>Samundra Singh:</strong> Gentle, humble, and festival-loving; expert in singing Holi songs.</li>
+                <li><strong>Mutri Singh:</strong> Worked at Patna High Court; respected for simplicity and reliability.</li>
+                <li><strong>Ramadhar Singh:</strong> Proficient in English, theater enthusiast, and follower of Gandhian lifestyle.</li>
+                <li><strong>Dr. Faneesh Singh:</strong> Dedicated to literature, history, and education; led cultural revival.</li>
+                <li><strong>Shyamdhata Singh:</strong> Contractor by profession; actively participated in cultural activities, especially drama.</li>
+                <li><strong>Dhrup Singh:</strong> Energetic, promoted social harmony, and actively engaged in sports and theater.</li>
+                <li><strong>Chandrashekhar Singh:</strong> Lifelong service as a village doctor; beloved by all.</li>
+                <li><strong>Suryashekhar Singh:</strong> Popular for his simple, humorous, and sociable personality.</li>
+                <li><strong>Raghvendra Singh:</strong> Guided by service and communication; follower of Paras Babu.</li>
+                <li><strong>Kamleendra Kumar Singh:</strong> Scholar and history enthusiast; guardian of village memories.</li>
+                <li><strong>Madhavendra Kumar Singh:</strong> Skilled in business; motivator of cultural activities; extremely gentle nature.</li>
+                <li><strong>Chandrakirti Singh:</strong> Martyr’s son; creative and inspired cultural leader following Gandhian ideals.</li>
+                <li><strong>Manish Prasad Singh:</strong> Advocate and social worker; actively engaged in education and social awareness.</li>
+                <li><strong>Captain Harikirti Singh:</strong> Retired army officer; deeply connected to the village and sociable personality.</li>
+                <li><strong>Shivkirti Singh:</strong> Former Supreme Court judge; his judicial journey is an inspiration to the clan and region.</li>
+            </ul>
+
+            <h3>The Torch of Heritage</h3>
+            <p>
+                This chapter pays tribute to all those who turned heritage from mere memory
+                into responsibility, paving the way for future generations.
+            </p>
+
+        </div>
+</div>
+
+    </div>
+</div>
+
+
+
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-slogan">नरवरगढ़ से आए नरौनी | Warriors of Narwargadh</div>
+            <div class="social-links">
+                <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="copyright">
+                © 2024 Narauni Rajput Heritage Foundation. All Rights Reserved.<br>
+                <a href="index.html" style="color: var(--light-parchment); text-decoration: none;">← Back to Home</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chapter and Language Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let currentLanguage = localStorage.getItem('preferredLanguage') || 'hi';
+            let currentChapter = '1';
+            
+            // Progress Bar Update
+            const updateProgressBar = () => {
+                const progressFill = document.getElementById('progressFill');
+                const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrollProgress = windowHeight > 0 ? (window.scrollY / windowHeight) * 100 : 0;
+                if(progressFill) {
+                    progressFill.style.width = scrollProgress + '%';
+                }
+            };
+            
+            // Header Shadow on Scroll
+            const header = document.querySelector('header');
+            const updateHeaderShadow = () => {
+                if(window.scrollY > 10) {
+                    header.style.boxShadow = '0 6px 16px rgba(139, 0, 0, 0.2)';
+                } else {
+                    header.style.boxShadow = '0 2px 8px rgba(139, 0, 0, 0.1)';
+                }
+            };
+            
+            // Language Toggle Button
+            const langToggleBtn = document.getElementById('langToggleBtn');
+            const langToggleText = document.getElementById('langToggleText');
+
+            langToggleBtn.addEventListener('click', function() {
+                // Toggle language
+                currentLanguage = currentLanguage === 'hi' ? 'en' : 'hi';
+                
+                // Update button text
+                langToggleText.textContent = currentLanguage === 'hi' ? 'हिंदी' : 'English';
+                
+                // Toggle active class
+                langToggleBtn.classList.toggle('active');
+                
+                // Update all content - keep current chapter active
+                const langContents = document.querySelectorAll('.lang-content');
+                langContents.forEach(content => {
+                    if (content.getAttribute('data-lang') === currentLanguage) {
+                        content.classList.add('active');
+                    } else {
+                        content.classList.remove('active');
+                    }
+                });
+                
+                // Save preference
+                localStorage.setItem('preferredLanguage', currentLanguage);
+            });
+
+            // Chapter Navigation - FIX: Prevent chapter reset during scrolling
+            const chapterBtns = document.querySelectorAll('.chapter-btn');
+            const chapterContents = document.querySelectorAll('.chapter-content');
+
+            chapterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const chapterNum = this.getAttribute('data-chapter');
+                    currentChapter = chapterNum;
+                    
+                    // Remove active class from all buttons
+                    chapterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Hide all chapters
+                    chapterContents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    // Show selected chapter
+                    const selectedChapter = document.querySelector(`.chapter-content[data-chapter="${chapterNum}"]`);
+                    if (selectedChapter) {
+                        selectedChapter.classList.add('active');
+                    }
+                    
+                    // Scroll to chapter
+                    const heritageSection = document.getElementById('heritage');
+                    if (heritageSection) {
+                        window.scrollTo({
+                            top: heritageSection.offsetTop - 120,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Initialize language preference
+            const langContents = document.querySelectorAll('.lang-content');
+            langContents.forEach(content => {
+                if (content.getAttribute('data-lang') === currentLanguage) {
+                    content.classList.add('active');
+                } else {
+                    content.classList.remove('active');
+                }
+            });
+            
+            if(currentLanguage === 'en') {
+                langToggleBtn.classList.add('active');
+                langToggleText.textContent = 'English';
+            }
+
+            // Scroll event listeners - use passive listener for better performance
+            window.addEventListener('scroll', updateProgressBar, { passive: true });
+            window.addEventListener('scroll', updateHeaderShadow, { passive: true });
+            
+            // Initial call
+            updateProgressBar();
+            updateHeaderShadow();
+        });
+    </script>
+</body>
+</html>

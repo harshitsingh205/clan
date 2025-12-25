@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narauni Family Tree - वंशवृक्ष</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=MedievalSharp&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #8B0000;
+            --secondary-color: #B8860B;
+            --accent-color: #654321;
+            --parchment: #F5E7C1;
+            --light-parchment: #F8F1E0;
+            --dark-text: #333;
+            --light-text: #555;
+            --highlight: #DAA520;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif', serif;
+            background-color: var(--light-parchment);
+            color: var(--dark-text);
+            background-image: url('https://www.transparenttextures.com/patterns/old-paper.png');
+            line-height: 1.8;
+            overflow-x: hidden;
+            padding-top: 80px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(245, 231, 193, 0.98);
+            color: var(--dark-text);
+            padding: 0.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--secondary-color);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.6rem 1rem;
+            gap: 0.8rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 1001;
+            gap: 0.6rem;
+            flex-shrink: 0;
+        }
+
+        .logo h2 {
+            font-family: 'Marcellus SC', serif;
+            color: var(--primary-color);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        .logo p {
+            font-family: 'MedievalSharp', cursive;
+            color: var(--dark-text);
+            font-weight: bold;
+            white-space: nowrap;
+            font-size: clamp(0.6rem, 2vw, 0.75rem);
+            margin: 0;
+        }
+
+        /* Back Button */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.5rem 0.9rem;
+            background: linear-gradient(135deg, var(--primary-color), #A00000);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-family: 'Marcellus SC', serif;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
+            cursor: pointer;
+            min-height: 40px;
+            font-size: clamp(0.7rem, 2vw, 0.85rem);
+            box-shadow: 0 2px 6px rgba(139, 0, 0, 0.15);
+            flex-shrink: 0;
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(135deg, var(--secondary-color), #9A7A0B);
+            border-color: var(--secondary-color);
+            transform: translateX(-2px);
+            box-shadow: 0 3px 10px rgba(184, 134, 11, 0.25);
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            display: flex;
+            align-items: center;
+            min-width: auto;
+            flex-shrink: 0;
+        }
+
+        .lang-toggle-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 18px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: 'Marcellus SC', serif;
+            transition: all 0.3s ease;
+            font-size: clamp(0.7rem, 1.8vw, 0.8rem);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            min-height: 40px;
+            min-width: 40px;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(139, 0, 0, 0.15);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .lang-toggle-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 3px 10px rgba(139, 0, 0, 0.25);
+        }
+
+        .lang-toggle-btn.active {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+        }
+
+        /* Main Content Area */
+        .content-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Page Title */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--parchment), rgba(184, 134, 11, 0.15));
+            border-radius: 10px;
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-header h1 {
+            font-family: 'Marcellus SC', serif;
+            color: var(--primary-color);
+            font-size: clamp(1.8rem, 6vw, 2.4rem);
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-header p {
+            color: var(--light-text);
+            font-style: italic;
+            font-size: clamp(1rem, 3vw, 1.15rem);
+        }
+
+        /* Scroll Content */
+        .scroll-content {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), var(--parchment));
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(184, 134, 11, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .scroll-content h2 {
+            color: var(--primary-color);
+            font-family: 'Marcellus SC', serif;
+            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.8rem;
+            text-align: center;
+        }
+
+        .scroll-content p {
+            margin-bottom: 1.5rem;
+            font-size: clamp(0.95rem, 2vw, 1.05rem);
+            line-height: 1.9;
+            color: var(--dark-text);
+        }
+
+        /* Journey Table */
+        .journey-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .journey-table thead {
+            background: linear-gradient(135deg, var(--primary-color), #A00000);
+            color: white;
+        }
+
+        .journey-table th {
+            padding: 1rem;
+            text-align: left;
+            font-family: 'Marcellus SC', serif;
+            font-weight: bold;
+            border: 1px solid #DDD;
+        }
+
+        .journey-table td {
+            padding: 1rem;
+            border: 1px solid #DDD;
+            font-size: clamp(0.9rem, 1.8vw, 1rem);
+        }
+
+        .journey-table tbody tr:nth-child(odd) {
+            background-color: rgba(184, 134, 11, 0.05);
+        }
+
+        .journey-table tbody tr:hover {
+            background-color: rgba(184, 134, 11, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .journey-table .highlight {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        /* Modern Premium PDF Viewer */
+        .pdf-viewer-container {
+            position: relative;
+            width: 100%;
+            background: white;
+            border-radius: 16px;
+            overflow: visible;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+            margin: 2rem 0;
+            border: none;
+            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+        }
+
+        .pdf-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #A00000 100%);
+            border-radius: 16px 16px 0 0;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            box-shadow: 0 8px 24px rgba(139, 0, 0, 0.3);
+        }
+
+        .pdf-title {
+            color: white;
+            font-weight: 700;
+            font-family: 'Marcellus SC', serif;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .pdf-page-counter-badge {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-family: 'Marcellus SC', serif;
+            font-size: clamp(0.85rem, 2vw, 0.95rem);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(8px);
+        }
+
+        .pdf-page-counter-badge i {
+            font-size: 1.1rem;
+        }
+
+        .pdf-controls-group {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        .pdf-controls-group button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            padding: 0;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-size: 1.2rem;
+        }
+
+        .pdf-controls-group button:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.35);
+            border-color: rgba(255, 255, 255, 0.7);
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .pdf-controls-group button:active:not(:disabled) {
+            transform: scale(0.95);
+        }
+
+        .pdf-controls-group button:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        .pdf-viewer-wrapper {
+            position: relative;
+            width: 100%;
+            height: auto;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 500px;
+            overflow: hidden;
+            padding: 2rem 1rem;
+            border-radius: 0;
+        }
+
+        .pdf-viewer-wrapper canvas {
+            max-width: 98%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            border: 1px solid rgba(184, 134, 11, 0.15);
+            animation: pageSlideIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: white;
+        }
+
+        @keyframes pageSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .pdf-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: var(--primary-color);
+            z-index: 10;
+        }
+
+        .pdf-loading-spinner {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(139, 0, 0, 0.15);
+            border-top-color: var(--primary-color);
+            border-right-color: var(--secondary-color);
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite;
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .pdf-loading-text {
+            font-weight: 700;
+            font-size: clamp(1rem, 3vw, 1.1rem);
+            color: var(--primary-color);
+        }
+
+        .pdf-error {
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .pdf-error i {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+            opacity: 0.8;
+        }
+
+        .pdf-error-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .pdf-error-text {
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+            color: var(--light-text);
+        }
+
+        /* Footer with Page Info */
+        .pdf-footer {
+            background: linear-gradient(135deg, rgba(184, 134, 11, 0.08), rgba(139, 0, 0, 0.05));
+            border-top: 2px solid var(--secondary-color);
+            border-radius: 0 0 16px 16px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .pdf-page-progress {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .pdf-progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background: rgba(184, 134, 11, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .pdf-progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            transition: width 0.5s cubic-bezier(0.4, 0.2, 0.2, 1);
+            border-radius: 4px;
+            box-shadow: 0 2px 6px rgba(139, 0, 0, 0.3);
+        }
+
+        .pdf-page-display {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .pdf-current-page {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            font-family: 'Marcellus SC', serif;
+        }
+
+        .pdf-current-page .current {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .pdf-current-page .total {
+            font-size: clamp(0.85rem, 2vw, 1rem);
+            color: var(--light-text);
+        }
+
+        .pdf-status-text {
+            font-size: 0.85rem;
+            color: var(--light-text);
+            font-style: italic;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 479px) {
+            .pdf-viewer-wrapper {
+                min-height: 400px;
+                padding: 1rem 0.5rem;
+            }
+
+            .pdf-header {
+                flex-direction: column;
+                padding: 1.2rem;
+                border-radius: 16px 16px 0 0;
+            }
+
+            .pdf-title {
+                text-align: center;
+                width: 100%;
+                font-size: 1rem;
+            }
+
+            .pdf-page-counter-badge {
+                width: 100%;
+                justify-content: center;
+                padding: 0.7rem;
+            }
+
+            .pdf-controls-group {
+                width: 100%;
+                justify-content: space-around;
+                gap: 0.5rem;
+            }
+
+            .pdf-controls-group button {
+                width: 50px;
+                height: 50px;
+                font-size: 1.4rem;
+            }
+
+            .pdf-viewer-wrapper canvas {
+                max-width: 100%;
+            }
+
+            .pdf-footer {
+                padding: 1.2rem;
+            }
+
+            .pdf-page-display {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+        /* Small Phone (480px - 599px) */
+        @media (min-width: 480px) and (max-width: 599px) {
+            .pdf-viewer-wrapper {
+                min-height: 450px;
+                padding: 1.5rem;
+            }
+
+            .pdf-header {
+                flex-direction: column;
+                padding: 1.3rem;
+            }
+
+            .pdf-controls-group {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .pdf-footer {
+                padding: 1.3rem;
+            }
+        }
+
+        /* Tablet (600px - 1023px) */
+        @media (min-width: 600px) and (max-width: 1023px) {
+            .pdf-viewer-wrapper {
+                min-height: 550px;
+                padding: 2rem;
+            }
+
+            .pdf-header {
+                padding: 1.5rem 2rem;
+            }
+
+            .pdf-footer {
+                padding: 1.5rem 2rem;
+            }
+        }
+
+        /* Desktop (1024px+) */
+        @media (min-width: 1024px) {
+            .pdf-viewer-wrapper {
+                min-height: 700px;
+                padding: 2.5rem;
+            }
+
+            .pdf-header {
+                padding: 1.8rem 2.2rem;
+            }
+
+            .pdf-footer {
+                padding: 1.8rem 2.2rem;
+            }
+
+            .pdf-controls-group button {
+                width: 48px;
+                height: 48px;
+            }
+        }
+
+        /* Large Desktop (1400px+) */
+        @media (min-width: 1400px) {
+            .pdf-viewer-wrapper {
+                min-height: 800px;
+            }
+        }
+
+        .tree-image {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            border: 2px solid var(--secondary-color);
+            margin: 1.5rem 0;
+        }
+
+        .lang-content {
+            display: none;
+        }
+
+        .lang-content.active {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--accent-color);
+            color: var(--light-parchment);
+            padding: 3rem 0 1.5rem;
+            text-align: center;
+            margin-top: 4rem;
+            border-top: 3px solid var(--secondary-color);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-slogan {
+            font-family: 'Marcellus SC', serif;
+            font-size: 1rem;
+            color: var(--secondary-color);
+            margin: 1rem 0;
+            font-weight: bold;
+        }
+
+        .copyright {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: rgba(248, 241, 224, 0.8);
+        }
+
+        .social-links {
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            color: var(--light-parchment);
+            font-size: 1.3rem;
+            margin: 0 0.7rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 90px;
+            }
+
+            .header-container {
+                flex-direction: row;
+                gap: 0.5rem;
+                padding: 0.5rem 0.8rem;
+            }
+
+            .logo {
+                text-align: left;
+                flex: 1;
+                min-width: 0;
+                gap: 0.4rem;
+            }
+
+            .logo h2 {
+                font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+                letter-spacing: 0.3px;
+            }
+
+            .logo p {
+                display: none;
+            }
+
+            .back-btn {
+                padding: 0.4rem 0.7rem;
+                font-size: 0.7rem;
+                min-height: 36px;
+            }
+
+            .back-btn i {
+                display: none;
+            }
+
+            .lang-toggle-btn {
+                padding: 0.35rem 0.6rem;
+                font-size: 0.65rem;
+                min-height: 36px;
+                min-width: 36px;
+            }
+
+            .lang-toggle-btn i {
+                display: none;
+            }
+
+            .content-wrapper {
+                padding: 1rem;
+            }
+
+            .scroll-content {
+                padding: 1.2rem;
+            }
+
+            .journey-table {
+                font-size: 0.9rem;
+            }
+
+            .journey-table th,
+            .journey-table td {
+                padding: 0.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            body {
+                padding-top: 80px;
+                font-size: 14px;
+            }
+
+            .header-container {
+                padding: 0.4rem 0.5rem;
+                gap: 0.4rem;
+            }
+
+            .logo h2 {
+                font-size: clamp(0.9rem, 3vw, 1.1rem);
+            }
+
+            .back-btn {
+                padding: 0.35rem 0.6rem;
+                font-size: 0.65rem;
+                min-height: 36px;
+                min-width: auto;
+            }
+
+            .back-btn span {
+                display: inline;
+            }
+
+            .lang-toggle-btn {
+                padding: 0.3rem 0.5rem;
+                font-size: 0.6rem;
+                min-height: 36px;
+                min-width: auto;
+            }
+
+            .lang-toggle-btn span {
+                display: inline;
+            }
+
+            .lang-toggle-btn i {
+                display: none;
+            }
+
+            .page-header {
+                padding: 1.2rem 0.8rem;
+                margin-bottom: 2rem;
+            }
+
+            .page-header h1 {
+                font-size: clamp(1.4rem, 5vw, 1.8rem);
+            }
+
+            .content-wrapper {
+                padding: 0.7rem;
+            }
+
+            .scroll-content {
+                padding: 1rem;
+                border-radius: 6px;
+            }
+
+            .journey-table {
+                font-size: 0.8rem;
+            }
+
+            .journey-table th,
+            .journey-table td {
+                padding: 0.6rem 0.4rem;
+            }
+
+            .scroll-content h2 {
+                font-size: clamp(1.2rem, 4vw, 1.4rem);
+            }
+        }
+
+        /* Animations */
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .back-btn {
+            animation: slideInFromLeft 0.5s ease;
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .lang-toggle-btn {
+            animation: slideInFromRight 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Professional Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h2><i class="fas fa-tree"></i> Narauni Family Tree</h2>
+                <p>वंशवृक्ष</p>
+            </div>
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Home</span>
+            </a>
+            <div class="language-toggle">
+                <button class="lang-toggle-btn active" id="langToggleBtn">
+                    <i class="fas fa-globe"></i>
+                    <span id="langToggleText">हिंदी</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section id="tree-content">
+        <div class="content-wrapper">
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="lang-content active" data-lang="hi">
+                    <h1>नरौनी राजपूत वंशवृक्ष</h1>
+                    <p>नरवरगढ़ से नरेंद्रपुर तक की यात्रा</p>
+                </div>
+                <div class="lang-content" data-lang="en">
+                    <h1>Narauni Rajput Family Tree</h1>
+                    <p>Journey from Narwargadh to Narendrapur</p>
+                </div>
+            </div>
+
+            <!-- Journey Section -->
+            <div class="scroll-content">
+                <div class="lang-content active" data-lang="hi">
+                    <h2>📍 नरवरगढ़ से नरेंद्रपुर तक की यात्रा</h2>
+                    <p>लगभग 300 वर्ष पूर्व, नरौनी राजपूत अपनी पैतृक मातृभूमि नरवरगढ़ से पूर्व की ओर निकले। यह यात्रा केवल एक भौगोलिक स्थानांतरण नहीं थी, बल्कि एक सांस्कृतिक और सामाजिक विरासत का प्रसार था। निम्न तालिका इस महान यात्रा के मुख्य पड़ावों को दर्शाती है:</p>
+                </div>
+                <div class="lang-content" data-lang="en">
+                    <h2>📍 Journey from Narwargadh to Narendrapur</h2>
+                    <p>Approximately three hundred years ago, the Narauni Rajputs embarked eastward from their ancestral homeland of Narwargadh. This journey was not merely a geographical relocation, but a spread of cultural and social heritage. The following map and table depict the major stops of this great journey:</p>
+                </div>
+
+                <!-- Journey Map Image -->
+                <div style="text-align: center; margin: 2rem 0;">
+                    <img src="tree.jpeg" alt="Journey Map - Narwargadh to Narendrapur" class="journey-map-image" style="width: 100%; max-width: 900px; height: auto; border-radius: 10px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); border: 2px solid var(--secondary-color); display: block; margin: 0 auto;">
+                </div>
+
+                <!-- Journey Table -->
+                <table class="journey-table">
+                    <thead>
+                        <tr>
+                            <th><span class="lang-content active" data-lang="hi">क्रम</span><span class="lang-content" data-lang="en">S.No</span></th>
+                            <th><span class="lang-content active" data-lang="hi">स्थान (हिंदी)</span><span class="lang-content" data-lang="en">Location (English)</span></th>
+                            <th><span class="lang-content active" data-lang="hi">विवरण</span><span class="lang-content" data-lang="en">Description</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01</td>
+                            <td><span class="lang-content active" data-lang="hi">नरवर, मध्य प्रदेश</span><span class="lang-content" data-lang="en">Narwar, Madhya Pradesh</span></td>
+                            <td><span class="lang-content active" data-lang="hi">पैतृक मातृभूमि</span><span class="lang-content" data-lang="en">Ancestral Homeland</span></td>
+                        </tr>
+                        <tr>
+                            <td>02</td>
+                            <td><span class="lang-content active" data-lang="hi">उज्जैन, मध्य प्रदेश</span><span class="lang-content" data-lang="en">Ujjain, Madhya Pradesh</span></td>
+                            <td><span class="lang-content active" data-lang="hi">प्राचीन तीर्थ स्थान</span><span class="lang-content" data-lang="en">Ancient Pilgrimage Site</span></td>
+                        </tr>
+                        <tr>
+                            <td>03</td>
+                            <td><span class="lang-content active" data-lang="hi">बद्रीनाथ, उत्तराखंड</span><span class="lang-content" data-lang="en">Badrinath, Uttarakhand</span></td>
+                            <td><span class="lang-content active" data-lang="hi">हिमालय की यात्रा</span><span class="lang-content" data-lang="en">Himalayan Journey</span></td>
+                        </tr>
+                        <tr>
+                            <td>04</td>
+                            <td><span class="lang-content active" data-lang="hi">श्री बद्रीनाथ मंदिर, उत्तराखंड</span><span class="lang-content" data-lang="en">Shri Badrinath Temple, Uttarakhand</span></td>
+                            <td><span class="lang-content active" data-lang="hi">धार्मिक महत्व</span><span class="lang-content" data-lang="en">Religious Significance</span></td>
+                        </tr>
+                        <tr>
+                            <td>05</td>
+                            <td><span class="lang-content active" data-lang="hi">गाजीपुर, उत्तर प्रदेश</span><span class="lang-content" data-lang="en">Ghazipur, Uttar Pradesh</span></td>
+                            <td><span class="lang-content active" data-lang="hi">गंगा नदी के तट पर</span><span class="lang-content" data-lang="en">On the Banks of Ganges</span></td>
+                        </tr>
+                        <tr>
+                            <td>06</td>
+                            <td><span class="lang-content active" data-lang="hi">गोरखपुर, उत्तर प्रदेश</span><span class="lang-content" data-lang="en">Gorakhpur, Uttar Pradesh</span></td>
+                            <td><span class="lang-content active" data-lang="hi">सांस्कृतिक केंद्र</span><span class="lang-content" data-lang="en">Cultural Hub</span></td>
+                        </tr>
+                        <tr>
+                            <td>07</td>
+                            <td><span class="lang-content active" data-lang="hi">राजा गाँव खरौनी, बलिया, उत्तर प्रदेश</span><span class="lang-content" data-lang="en">Raja Gaon Kharauni, Ballia, Uttar Pradesh</span></td>
+                            <td><span class="lang-content active" data-lang="hi">प्रमुख बस्ती</span><span class="lang-content" data-lang="en">Major Settlement</span></td>
+                        </tr>
+                        <tr>
+                            <td>08</td>
+                            <td><span class="lang-content active" data-lang="hi">बाँसडीह, बलिया, उत्तर प्रदेश</span><span class="lang-content" data-lang="en">Bansdih, Ballia, Uttar Pradesh</span></td>
+                            <td><span class="lang-content active" data-lang="hi">बस्तियों का विस्तार</span><span class="lang-content" data-lang="en">Expansion of Settlements</span></td>
+                        </tr>
+                        <tr>
+                            <td>09</td>
+                            <td><span class="highlight"><span class="lang-content active" data-lang="hi">आसांव (असरांव), सिवान, बिहार</span><span class="lang-content" data-lang="en">Aashao (Asraon), Siwan, Bihar</span></span></td>
+                            <td><span class="lang-content active" data-lang="hi">महत्वपूर्ण केंद्र</span><span class="lang-content" data-lang="en">Important Center</span></td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td><span class="lang-content active" data-lang="hi">चैनपुर, सारण, बिहार</span><span class="lang-content" data-lang="en">Chainpur, Saran, Bihar</span></td>
+                            <td><span class="lang-content active" data-lang="hi">मध्य बिहार</span><span class="lang-content" data-lang="en">Central Bihar</span></td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td><span class="highlight"><span class="lang-content active" data-lang="hi">नरेंद्रपुर (नंदपुर), सिवान, बिहार</span><span class="lang-content" data-lang="en">Narendrapur (Nandpur), Siwan, Bihar</span></span></td>
+                            <td><span class="lang-content active" data-lang="hi">अंतिम निवास स्थान</span><span class="lang-content" data-lang="en">Final Settlement</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="lang-content active" data-lang="hi">
+                    <p style="margin-top: 1.5rem;"><strong>नोट:</strong> नरेंद्रपुर में नरौनी राजपूतों की प्रमुख बस्तियाँ स्थापित हुईं और यहाँ से उनकी पहचान एक मजबूत सामाजिक इकाई के रूप में प्रतिष्ठित हुई।</p>
+                </div>
+                <div class="lang-content" data-lang="en">
+                    <p style="margin-top: 1.5rem;"><strong>Note:</strong> The major settlements of the Narauni Rajputs were established in Narendrapur, from where their identity as a strong social unit was firmly established.</p>
+                </div>
+            </div>
+
+            <!-- Family Tree Section -->
+            <div class="scroll-content tree-section">
+                <div class="lang-content active" data-lang="hi">
+                    <h2>👨‍👩‍👧‍👦 नरौनी राजपूत वंशवृक्ष</h2>
+                    <p>नीचे दिया गया वंशवृक्ष नरौनी राजपूत परिवार की पीढ़ी दर पीढ़ी विस्तृत वंशावली को दर्शाता है। यह वंशवृक्ष परिवार की जड़ों, प्रमुख व्यक्तियों और उनके योगदान को समझने में मदद करता है।</p>
+                </div>
+                <div class="lang-content" data-lang="en">
+                    <h2>👨‍👩‍👧‍👦 Narauni Rajput Family Tree</h2>
+                    <p>The comprehensive family tree document below depicts the extensive genealogy of the Narauni Rajput family across generations. This document helps us understand the family's roots, prominent individuals, and their contributions to society.</p>
+                </div>
+
+                    <!-- Professional Single-Page PDF Viewer -->
+                    <div class="pdf-viewer-container">
+                        <!-- Modern Premium PDF Header -->
+                        <div class="pdf-header">
+                            <div class="pdf-title">
+                                <span class="lang-content active" data-lang="hi">🏛️ वंशवृक्ष दस्तावेज़</span>
+                                <span class="lang-content" data-lang="en">🏛️ Family Tree Document</span>
+                            </div>
+                            
+                            <div class="pdf-page-counter-badge">
+                                <i class="fas fa-file-pdf"></i>
+                                <span id="pageCountBadge">1 / --</span>
+                            </div>
+
+                            <div class="pdf-controls-group">
+                                <button id="prevBtn" onclick="previousPage()" title="Previous Page" aria-label="Previous" class="pdf-nav-btn">
+                                    <i class="fas fa-chevron-left"></i>
+                                </button>
+                                <button id="nextBtn" onclick="nextPage()" title="Next Page" aria-label="Next" class="pdf-nav-btn">
+                                    <i class="fas fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- PDF Viewer Canvas Area -->
+                        <div class="pdf-viewer-wrapper" id="pdfViewer">
+                            <div class="pdf-loading" id="loadingIndicator">
+                                <div class="pdf-loading-spinner"></div>
+                                <div class="pdf-loading-text">
+                                    <span class="lang-content active" data-lang="hi">दस्तावेज़ लोड हो रहा है...</span>
+                                    <span class="lang-content" data-lang="en">Loading document...</span>
+                                </div>
+                            </div>
+                            <canvas id="pdfCanvas" style="display: none;"></canvas>
+                        </div>
+
+                        <!-- Modern PDF Footer with Progress -->
+                        <div class="pdf-footer">
+                            <div class="pdf-page-progress">
+                                <div class="pdf-progress-bar-container">
+                                    <div class="pdf-progress-bar" id="progressBar" style="width: 0%;"></div>
+                                </div>
+                                
+                                <div class="pdf-page-display">
+                                    <div class="pdf-current-page">
+                                        <span class="lang-content active" data-lang="hi">पृष्ठ:</span>
+                                        <span class="lang-content" data-lang="en">Page:</span>
+                                        <span class="current" id="pageNum">1</span>
+                                        <span class="total">/ <span id="pageCount">--</span></span>
+                                    </div>
+                                    
+                                    <div class="pdf-status-text">
+                                        <span class="lang-content active" data-lang="hi" id="statusHi">नेविगेट करने के लिए बटन का उपयोग करें</span>
+                                        <span class="lang-content" data-lang="en" id="statusEn">Use buttons or arrow keys to navigate</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                 
+                <!-- Key Ancestors Section -->
+                <div style="margin-top: 2rem;">
+                    <div class="lang-content active" data-lang="hi">
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem; border-bottom: 2px solid var(--secondary-color); padding-bottom: 0.5rem;">🎖️ प्रमुख पूर्वज</h3>
+                    </div>
+                    <div class="lang-content" data-lang="en">
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem; border-bottom: 2px solid var(--secondary-color); padding-bottom: 0.5rem;">🎖️ Key Ancestors</h3>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                        <div style="background: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(184, 134, 11, 0.1)); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--secondary-color);">
+                            <div class="lang-content active" data-lang="hi">
+                                <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">श्री दुर्ग देव</h4>
+                                <p style="font-size: 0.95rem; color: var(--light-text);">तीर्थयात्रा के समय पूर्व की ओर यात्रा का नेतृत्व किया</p>
+                            </div>
+                            <div class="lang-content" data-lang="en">
+                                <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Sri Durga Dev</h4>
+                                <p style="font-size: 0.95rem; color: var(--light-text);">Led the eastward journey during pilgrimage</p>
+                            </div>
+                        </div>
+
+                        <div style="background: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(184, 134, 11, 0.1)); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--secondary-color);">
+                            <div class="lang-content active" data-lang="hi">
+                                <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">श्री लबंग देव</h4>
+                                <p style="font-size: 0.95rem; color: var(--light-text);">दुर्ग देव के साथ महान यात्रा के साथी</p>
+                            </div>
+                            <div class="lang-content" data-lang="en">
+                                <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Sri Lubang Dev</h4>
+                                <p style="font-size: 0.95rem; color: var(--light-text);">Companion of Durga Dev in the great journey</p>
+                            </div>
+                        </div>
+
+                        <div style="background: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(184, 134, 11, 0.1)); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--secondary-color);">
+                            <div class="lang-content active" data-lang="hi">
+                                <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">बाबू वंशीधर राय</h4>
+                                <p style="font-size: 0.95rem; color: var(--light-text);">सामाजिक नेतृत्व के स्थापक, नौ पुत्रों के पिता</p>
+                            </div>
+                            <div class="lang-content" data-lang="en">
+                                <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Babu Vanshidhar Ray</h4>
+                                <p style="font-size: 0.95rem; color: var(--light-text);">Founder of social leadership, father of nine sons</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-slogan">नरवरगढ़ से आए नरौनी | Warriors of Narwargadh</div>
+            <div class="social-links">
+                <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="copyright">
+                © 2024 Narauni Rajput Heritage Foundation. All Rights Reserved.<br>
+                <a href="index.html" style="color: var(--light-parchment); text-decoration: none;">← Back to Home</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PDF.js Library - Optimized for Performance -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    
+    <!-- Fast PDF Viewer Script with Optimization -->
+    <script>
+        // High-Performance PDF.js Configuration
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+        // Cache configuration
+        const CACHE_NAME = 'pdf-cache-v1';
+        const CACHE_TIMEOUT = 24 * 60 * 60 * 1000; // 24 hours
+
+        let pdfDoc = null;
+        let currentPage = 1;
+        let renderingPage = null;
+        let pageCache = new Map(); // In-memory cache for rendered pages
+        
+        // Local PDF embedded as base64 or stored locally
+        const localPdfPath = 'tree.pdf';
+        const remotePdfUrls = [
+            'https://harshitsingh205.github.io/pdf-hosting-narauni/tree.pdf'
+        ];
+
+        // Fast PDF initialization with caching
+        async function initPDFViewer() {
+            try {
+                console.log('🚀 Starting optimized PDF loading...');
+                const startTime = performance.now();
+                
+                // Try to load from local first (fastest)
+                let arrayBuffer = await loadPDFFromLocal();
+                
+                // Fallback to remote with timeout
+                if (!arrayBuffer) {
+                    arrayBuffer = await loadPDFFromRemote();
+                }
+                
+                if (!arrayBuffer) {
+                    throw new Error('No PDF source available');
+                }
+                
+                // Fast document parsing
+                pdfDoc = await pdfjsLib.getDocument({ 
+                    data: arrayBuffer,
+                    cMapUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/cmaps/',
+                    cMapPacked: true,
+                    standardFontDataUrl: 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/standard_fonts/'
+                }).promise;
+                
+                document.getElementById('pageCount').textContent = pdfDoc.numPages;
+                document.getElementById('pageCountBadge').textContent = '1 / ' + pdfDoc.numPages;
+                document.getElementById('loadingIndicator').style.display = 'none';
+                
+                const loadTime = performance.now() - startTime;
+                console.log(`✅ PDF loaded in ${loadTime.toFixed(2)}ms`);
+                
+                // Render first page immediately
+                renderPage(1);
+                
+                // Pre-cache next 2 pages for smooth navigation
+                preCachePages([2, 3]);
+                
+            } catch (error) {
+                console.error('❌ PDF Loading Error:', error);
+                showPDFError();
+            }
+        }
+
+        // Load from local PDF file (fastest)
+        async function loadPDFFromLocal() {
+            try {
+                console.log('📁 Attempting local PDF load...');
+                const response = await fetch(localPdfPath, {
+                    method: 'GET',
+                    cache: 'force-cache'
+                });
+                
+                if (response.ok) {
+                    const arrayBuffer = await response.arrayBuffer();
+                    console.log('✅ Local PDF loaded');
+                    return arrayBuffer;
+                }
+            } catch (error) {
+                console.warn('⚠️ Local PDF unavailable:', error);
+            }
+            return null;
+        }
+
+        // Load from remote with timeout (secure fallback)
+        async function loadPDFFromRemote() {
+            for (let url of remotePdfUrls) {
+                try {
+                    console.log('🌐 Attempting remote PDF load:', url);
+                    
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 15000); // 15s timeout
+                    
+                    const response = await fetch(url, {
+                        method: 'GET',
+                        headers: { 'Accept': 'application/pdf' },
+                        signal: controller.signal,
+                        cache: 'default'
+                    });
+                    
+                    clearTimeout(timeoutId);
+                    
+                    if (response.ok) {
+                        const arrayBuffer = await response.arrayBuffer();
+                        console.log('✅ Remote PDF loaded');
+                        return arrayBuffer;
+                    }
+                } catch (error) {
+                    console.warn(`⚠️ Remote load failed (${url}):`, error.message);
+                    continue;
+                }
+            }
+            return null;
+        }
+
+        // Pre-cache next pages for smooth navigation
+        async function preCachePages(pageNumbers) {
+            for (let pageNum of pageNumbers) {
+                if (pageNum <= pdfDoc.numPages && !pageCache.has(pageNum)) {
+                    try {
+                        const page = await pdfDoc.getPage(pageNum);
+                        pageCache.set(pageNum, page);
+                    } catch (error) {
+                        console.warn(`Failed to cache page ${pageNum}`);
+                    }
+                }
+            }
+        }
+
+        // Show error message
+        function showPDFError() {
+            const viewer = document.getElementById('pdfViewer');
+            viewer.innerHTML = `
+                <div class="pdf-error">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <div class="pdf-error-title">
+                        <span class="lang-content active" data-lang="hi">पीडीएफ लोड करने में समस्या</span>
+                        <span class="lang-content" data-lang="en">Unable to Load PDF</span>
+                    </div>
+                    <div class="pdf-error-text">
+                        <span class="lang-content active" data-lang="hi">कृपया नीचे दिए गए विकल्प का उपयोग करें</span>
+                        <span class="lang-content" data-lang="en">Please use the option below</span>
+                    </div>
+                    <a href="https://harshitsingh205.github.io/pdf-hosting-narauni/" target="_blank" style="display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.9rem 1.6rem; background: linear-gradient(135deg, var(--primary-color), #A00000); color: white; text-decoration: none; border-radius: 8px; font-weight: bold; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(139, 0, 0, 0.25); font-size: 0.95rem;">
+                        <i class="fas fa-external-link-alt"></i>
+                        <span class="lang-content active" data-lang="hi">ऑनलाइन पीडीएफ देखें</span>
+                        <span class="lang-content" data-lang="en">View PDF Online</span>
+                    </a>
+                </div>
+            `;
+        }
+
+        // Fast, optimized page rendering
+        async function renderPage(pageNumber) {
+            if (!pdfDoc || renderingPage === pageNumber) return;
+            
+            renderingPage = pageNumber;
+            
+            try {
+                const canvas = document.getElementById('pdfCanvas');
+                const context = canvas.getContext('2d', { alpha: false, antialias: true });
+                
+                // Use cached page or fetch
+                let page = pageCache.has(pageNumber) ? pageCache.get(pageNumber) : await pdfDoc.getPage(pageNumber);
+                
+                // Cache this page
+                if (!pageCache.has(pageNumber)) {
+                    pageCache.set(pageNumber, page);
+                }
+
+                const devicePixelRatio = window.devicePixelRatio || 1;
+                const containerWidth = document.getElementById('pdfViewer').offsetWidth - 40;
+                const baseViewport = page.getViewport({ scale: 1 });
+                
+                // Optimal scale for fast rendering + quality
+                let scale = (containerWidth / baseViewport.width) * devicePixelRatio;
+                scale = Math.min(Math.max(scale, 1.5), 2.5); // Balanced: 1.5-2.5 for speed
+                
+                const viewport = page.getViewport({ scale: scale });
+
+                // Optimized canvas setup
+                canvas.width = viewport.width;
+                canvas.height = viewport.height;
+                canvas.style.width = (viewport.width / devicePixelRatio) + 'px';
+                canvas.style.height = (viewport.height / devicePixelRatio) + 'px';
+                canvas.style.display = 'block';
+
+                // Fast rendering context
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport,
+                    intent: 'display'
+                };
+
+                // Render with abort capability for faster page switches
+                const renderTask = page.render(renderContext);
+                renderTask.promise.then(() => {
+                    renderingPage = null;
+                    
+                    // Update UI
+                    currentPage = pageNumber;
+                    document.getElementById('pageNum').textContent = pageNumber;
+                    document.getElementById('pageCountBadge').textContent = pageNumber + ' / ' + pdfDoc.numPages;
+                    
+                    // Update progress bar
+                    const progress = (pageNumber / pdfDoc.numPages) * 100;
+                    document.getElementById('progressBar').style.width = progress + '%';
+                    
+                    // Update button states
+                    document.getElementById('prevBtn').disabled = pageNumber === 1;
+                    document.getElementById('nextBtn').disabled = pageNumber === pdfDoc.numPages;
+                    
+                    // Pre-cache next pages
+                    const nextPages = [];
+                    if (pageNumber < pdfDoc.numPages) nextPages.push(pageNumber + 1);
+                    if (pageNumber < pdfDoc.numPages - 1) nextPages.push(pageNumber + 2);
+                    preCachePages(nextPages);
+                    
+                    console.log(`✅ Page ${pageNumber} rendered`);
+                }).catch(error => {
+                    console.error(`Error rendering page ${pageNumber}:`, error);
+                    renderingPage = null;
+                });
+                
+            } catch (error) {
+                console.error('❌ Render error:', error);
+                renderingPage = null;
+                showPDFError();
+            }
+        }
+
+        // Fast navigation functions with smooth scroll
+        function previousPage() {
+            if (currentPage > 1 && !renderingPage) {
+                renderPage(currentPage - 1);
+                scrollToPDF();
+            }
+        }
+
+        function nextPage() {
+            if (pdfDoc && currentPage < pdfDoc.numPages && !renderingPage) {
+                renderPage(currentPage + 1);
+                scrollToPDF();
+            }
+        }
+
+        // Optimized smooth scroll to PDF viewer
+        function scrollToPDF() {
+            const pdfElement = document.getElementById('pdfViewer');
+            if (pdfElement.scrollIntoView) {
+                pdfElement.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'nearest',
+                    inline: 'center'
+                });
+            }
+        }
+
+        // Fast keyboard navigation (debounced)
+        let lastKeyTime = 0;
+        document.addEventListener('keydown', function(event) {
+            const now = Date.now();
+            if (now - lastKeyTime < 100) return; // Prevent rapid key presses
+            
+            if (event.key === 'ArrowLeft') {
+                lastKeyTime = now;
+                previousPage();
+                event.preventDefault();
+            }
+            if (event.key === 'ArrowRight') {
+                lastKeyTime = now;
+                nextPage();
+                event.preventDefault();
+            }
+        });
+
+        // Fast initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            initPDFViewer();
+        });
+
+        // Handle window resize with optimization
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                if (pdfDoc && currentPage && !renderingPage) {
+                    renderPage(currentPage);
+                }
+            }, 500); // Increased debounce for better performance
+        });
+
+        // Add CSS animation for smooth page transitions
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pageSlideIn {
+                from { opacity: 0; transform: scale(0.98) translateY(5px); }
+                to { opacity: 1; transform: scale(1) translateY(0); }
+            }
+            #pdfCanvas { animation: pageSlideIn 0.3s ease-out; }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+    <!-- Language Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let currentLanguage = localStorage.getItem('preferredLanguage') || 'hi';
+            
+            // Language Toggle Button
+            const langToggleBtn = document.getElementById('langToggleBtn');
+            const langToggleText = document.getElementById('langToggleText');
+
+            langToggleBtn.addEventListener('click', function() {
+                // Toggle language
+                currentLanguage = currentLanguage === 'hi' ? 'en' : 'hi';
+                
+                // Update button text
+                langToggleText.textContent = currentLanguage === 'hi' ? 'हिंदी' : 'English';
+                
+                // Toggle active class
+                langToggleBtn.classList.toggle('active');
+                
+                // Update all content
+                const langContents = document.querySelectorAll('.lang-content');
+                langContents.forEach(content => {
+                    if (content.getAttribute('data-lang') === currentLanguage) {
+                        content.classList.add('active');
+                    } else {
+                        content.classList.remove('active');
+                    }
+                });
+                
+                // Save preference
+                localStorage.setItem('preferredLanguage', currentLanguage);
+            });
+
+            // Initialize language preference
+            const langContents = document.querySelectorAll('.lang-content');
+            langContents.forEach(content => {
+                if (content.getAttribute('data-lang') === currentLanguage) {
+                    content.classList.add('active');
+                } else {
+                    content.classList.remove('active');
+                }
+            });
+            
+            if(currentLanguage === 'en') {
+                langToggleBtn.classList.add('active');
+                langToggleText.textContent = 'English';
+            }
+        });
+    </script>
+</body>
+</html>
