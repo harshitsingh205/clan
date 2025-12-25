@@ -1,32 +1,10 @@
 # Narauni Heritage Website - Robots Configuration
-# SEO Optimized Crawler Instructions
+# Clean & Google Search Console Safe
 
-# Allow all search engine crawlers
 User-agent: *
 Allow: /
-Allow: *.html
-Allow: *.css
-Allow: *.js
-Allow: /images/
-Disallow: /private/
+
 Disallow: /admin/
-Disallow: *.pdf$
+Disallow: /private/
 
-# Specific for Google
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 0
-
-# Specific for Bing
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 1
-
-# Sitemap reference
 Sitemap: https://clan-one.vercel.app/sitemap.xml
-
-# Request rate (for search engines that respect it)
-Request-rate: 1/1s
-
-# Crawl delay for polite crawlers
-Crawl-delay: 1
