@@ -575,6 +575,115 @@
         .lang-toggle-btn {
             animation: slideInFromRight 0.5s ease;
         }
+         .pdf-viewer-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--secondary);
+        }
+        
+        .pdf-iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            display: block;
+        }
+        
+        .pdf-fallback {
+            padding: 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-top: 1px solid #dee2e6;
+        }
+        
+        .pdf-fallback p {
+            margin-bottom: 15px;
+            color: #495057;
+            font-size: 16px;
+        }
+        
+        .pdf-options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .pdf-option-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--primary), #a52a2a);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .pdf-option-btn:hover {
+            background: linear-gradient(135deg, var(--secondary), #daa520);
+            transform: translateY(-2px);
+            border-color: var(--secondary);
+            box-shadow: 0 4px 12px rgba(184, 134, 11, 0.2);
+        }
+        
+        .pdf-option-btn i {
+            font-size: 18px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .pdf-iframe {
+                height: 500px;
+            }
+            
+            .pdf-option-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .pdf-iframe {
+                height: 400px;
+            }
+            
+            .pdf-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .pdf-option-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .pdf-iframe {
+                height: 350px;
+            }
+            
+            .pdf-fallback {
+                padding: 15px;
+            }
+            
+            .pdf-fallback p {
+                font-size: 14px;
+            }
+        }
     </style>
     
     <!-- Structured Data - JSON-LD Schema for Genealogy -->
@@ -962,4 +1071,5 @@
 </body>
 
 </html>
+
 
