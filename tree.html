@@ -758,14 +758,32 @@
                     <p>The comprehensive family tree document below depicts the extensive genealogy of the Narauni Rajput family across generations. This document helps us understand the family's roots, prominent individuals, and their contributions to society.</p>
                 </div>
 
-                <!-- Simple PDF Embed (works in all browsers) -->
-                <div style="width:100%;max-width:900px;margin:2rem auto;">
-                  <iframe src="tree.pdf" width="100%" height="600" style="border:1px solid #ccc;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.10);background:#fff;" allow="autoplay" title="Narauni Family Tree PDF"></iframe>
-                                  <!-- Consider providing a text summary of the PDF content for SEO and accessibility -->
-                  <div style="text-align:center;font-size:0.95rem;color:#555;margin-top:0.5rem;">
-                    <span>यदि PDF लोड नहीं हो रहा है, <a href="tree.pdf" target="_blank" rel="noopener" style="color:#8B0000;text-decoration:underline;">यहाँ क्लिक करें</a>।<br>If the PDF does not load, <a src="https://harshitsingh205.github.io/pdf-hosting-narauni" target="_blank" rel="noopener" style="color:#8B0000;text-decoration:underline;">click here to open it</a>.</span>
-                  </div>
-                </div>
+                <!-- PDF Viewer with proper fallback -->
+    <div class="pdf-viewer-container">
+        <!-- Try local PDF first, then fallback to online version -->
+        <iframe 
+            src="https://harshitsingh205.github.io/pdf-hosting-narauni/" 
+            class="pdf-iframe"
+            title="Narauni Family Tree PDF Document"
+            loading="lazy"
+            onerror="tree.pdf';">
+        </iframe>
+        
+        <div class="pdf-fallback">
+            <p id="pdfFallbackText">If PDF is not loading, try these options:</p>
+            <div class="pdf-options">
+                <a href="tree.pdf" target="_blank" rel="noopener" class="pdf-option-btn">
+                    <i class="fas fa-external-link-alt"></i>
+                    <span id="openPdfText">Open PDF in New Tab</span>
+                </a>
+                <a href="https://harshitsingh205.github.io/pdf-hosting-narauni/" target="_blank" rel="noopener" class="pdf-option-btn">
+                    <i class="fas fa-cloud"></i>
+                    <span id="openOnlineText">Open Online Version</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
 
                  
                 <!-- Key Ancestors Section -->
@@ -841,17 +859,68 @@
     <script>
         // Initialize PDF.js worker
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-
-        // State variables
-        let pdfDoc = null;
-        let currentPage = 1;
-        let isRendering = false;
+    </script>
+         <script>
+        // Language management for fallback text
+        let currentLanguage = 'hi'; // Default to Hindi
         
-        // PDF URLs to try (local first, then remote)
-        const pdfUrls = [
-          
-            'https://harshitsingh205.github.io/pdf-hosting-narauni/'  // Remote fallback
-        ];
+        const languageTexts = {
+            hi: {
+                pdfFallbackText: "यदि PDF लोड नहीं हो रहा है, नीचे दिए गए विकल्प आज़माएँ:",
+                openPdfText: "नए टैब में PDF खोलें",
+                openOnlineText: "ऑनलाइन संस्करण खोलें"
+            },
+            en: {
+                pdfFallbackText: "If PDF is not loading, try these options:",
+                openPdfText: "Open PDF in New Tab",
+                openOnlineText: "Open Online Version"
+            }
+        };
+        
+        // Function to update language
+        function updateLanguage(lang) {
+            currentLanguage = lang;
+            const texts = languageTexts[lang];
+            
+            document.getElementById('pdfFallbackText').textContent = texts.pdfFallbackText;
+            document.getElementById('openPdfText').textContent = texts.openPdfText;
+            document.getElementById('openOnlineText').textContent = texts.openOnlineText;
+        }
+        
+        // Detect PDF support
+        function checkPDFSupport() {
+            const iframe = document.querySelector('.pdf-iframe');
+            
+            // Check if iframe loaded successfully
+            setTimeout(() => {
+                try {
+                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    // If we can't access the iframe document, PDF might not be loading
+                    if (!iframeDoc || iframeDoc.readyState === 'uninitialized') {
+                        showFallback();
+                    }
+                } catch (e) {
+                    // Cross-origin error - PDF is loading but we can't check
+                    // This is normal for PDFs
+                }
+            }, 3000);
+        }
+        
+        function showFallback() {
+            const fallback = document.querySelector('.pdf-fallback');
+            fallback.style.display = 'block';
+        }
+        
+        // Check PDF support on load
+        window.addEventListener('load', checkPDFSupport);
+        
+        // Handle iframe error
+        document.querySelector('.pdf-iframe').addEventListener('error', function() {
+            // Try online version
+            this.src = 'https://harshitsingh205.github.io/pdf-hosting-narauni/';
+            showFallback();
+        });
+    </script>
 
       
     <script>
@@ -893,3 +962,4 @@
 </body>
 
 </html>
+
