@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Marowa Garh Heritage Story & History | Narauni Rajput Legacy</title>
+    <meta name="description" content="Explore the heritage story of the Marowa Garh branch of the Narauni Rajput clan. Bilingual history in Hindi and English.">
+    <meta name="keywords" content="Narauni, Marowa Garh, Tikri, Kona, Asha Bigha, Babu Dambar Singh, Bansdih, Ballia, Aurangabad, Rajput heritage">
+    <meta name="author" content="Narauni Rajput Heritage Foundation">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Narauni Heritage Story - The Marowa Garh Branch (Aurangabad)">
+    <meta property="og:description" content="Bilingual heritage story of the Marowa Garh branch of the Narauni Rajput clan.">
+    <link rel="canonical" href="https://clan-one.vercel.app/marowa-garh-story.html">
+    <meta name="theme-color" content="#8B0000">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus+SC&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #8B0000;
+            --secondary-color: #B8860B;
+            --accent-color: #654321;
+            --parchment: #F5E7C1;
+            --light-parchment: #F8F1E0;
+            --dark-text: #333;
+            --light-text: #555;
+            --highlight: #DAA520;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Serif', serif;
+            background-color: var(--light-parchment);
+            color: var(--dark-text);
+            background-image: url('https://www.transparenttextures.com/patterns/old-paper.png');
+            line-height: 1.8;
+            overflow-x: hidden;
+            padding-top: 80px;
+        }
+
+        /* ── Header ── */
+        header {
+            background-color: rgba(245, 231, 193, 0.98);
+            color: var(--dark-text);
+            padding: 0.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--secondary-color);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.6rem 1rem;
+            gap: 0.8rem;
+        }
+        .logo { display: flex; align-items: center; position: relative; z-index: 1001; gap: 0.6rem; flex-shrink: 0; }
+        .logo h2 {
+            font-family: 'Marcellus SC', serif;
+            color: var(--primary-color);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            letter-spacing: 0.5px;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            margin: 0; line-height: 1.1;
+        }
+        .logo p { font-family: 'Noto Serif', serif; color: var(--dark-text); font-weight: bold; white-space: nowrap; font-size: clamp(0.6rem, 2vw, 0.75rem); margin: 0; }
+        .back-btn {
+            display: inline-flex; align-items: center; gap: 0.3rem;
+            padding: 0.5rem 0.9rem;
+            background: linear-gradient(135deg, var(--primary-color), #A00000);
+            color: white; text-decoration: none; border-radius: 5px;
+            font-family: 'Marcellus SC', serif; font-weight: bold;
+            transition: all 0.3s ease; border: 2px solid var(--primary-color);
+            cursor: pointer; min-height: 40px; font-size: clamp(0.7rem, 2vw, 0.85rem);
+            box-shadow: 0 2px 6px rgba(139,0,0,0.15); flex-shrink: 0;
+        }
+        .back-btn:hover { background: linear-gradient(135deg, var(--secondary-color), #9A7A0B); border-color: var(--secondary-color); transform: translateX(-2px); }
+        .language-toggle { display: flex; align-items: center; flex-shrink: 0; }
+        .lang-toggle-btn {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; border: none; padding: 0.4rem 0.8rem; border-radius: 18px;
+            cursor: pointer; font-weight: bold; font-family: 'Marcellus SC', serif;
+            transition: all 0.3s ease; font-size: clamp(0.7rem, 1.8vw, 0.8rem);
+            display: flex; align-items: center; gap: 0.3rem;
+            min-height: 40px; min-width: 40px; justify-content: center;
+            box-shadow: 0 2px 6px rgba(139,0,0,0.15); white-space: nowrap; flex-shrink: 0;
+        }
+        .lang-toggle-btn:hover { transform: scale(1.05); box-shadow: 0 3px 10px rgba(139,0,0,0.25); }
+        .lang-toggle-btn.active { background: linear-gradient(135deg, var(--secondary-color), var(--primary-color)); }
+
+        /* ── Progress Bar ── */
+        .progress-bar { width: 100%; height: 3px; background-color: #EEE; position: fixed; top: 80px; left: 0; z-index: 999; }
+        .progress-fill { height: 100%; background: linear-gradient(to right, var(--primary-color), var(--secondary-color)); width: 0%; transition: width 0.3s ease; }
+
+        /* ── Chapter Nav ── */
+        .chapter-nav {
+            background: linear-gradient(to right, var(--parchment), rgba(184,134,11,0.05));
+            border-bottom: 3px solid var(--secondary-color);
+            padding: 1rem 0;
+            margin-bottom: 3rem;
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+        .chapter-nav-container {
+            max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
+            display: flex; gap: 0.5rem; flex-wrap: wrap;
+            align-items: center; justify-content: center;
+        }
+        .chapter-btn {
+            padding: 0.55rem 1rem;
+            background: linear-gradient(135deg, white, #F9F9F9);
+            border: 2px solid var(--secondary-color);
+            color: var(--dark-text); cursor: pointer; border-radius: 8px;
+            font-family: 'Marcellus SC', serif; font-weight: bold;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            font-size: clamp(0.65rem, 1.4vw, 0.82rem);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            min-height: 40px; display: flex; align-items: center; justify-content: center;
+            text-align: center;
+        }
+        .chapter-btn:hover { background: linear-gradient(135deg, var(--secondary-color), #D4A574); color: white; transform: translateY(-3px); box-shadow: 0 6px 16px rgba(184,134,11,0.3); }
+        .chapter-btn.active { background: linear-gradient(135deg, var(--primary-color), #B00000); color: white; box-shadow: 0 6px 16px rgba(139,0,0,0.4); transform: scale(1.04); }
+
+        /* ── Main Content ── */
+        .content-wrapper { max-width: 1000px; margin: 0 auto; padding: 2rem; }
+        .chapter-content { display: none; animation: fadeIn 0.6s ease; opacity: 0; }
+        .chapter-content.active { display: block; opacity: 1; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .chapter-header {
+            text-align: center; margin-bottom: 3rem; padding: 3rem 2rem;
+            background: linear-gradient(135deg, var(--parchment), rgba(184,134,11,0.15));
+            border-radius: 10px; border-left: 5px solid var(--primary-color);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+        .chapter-number { font-size: 1.2rem; color: var(--secondary-color); font-weight: bold; margin-bottom: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
+        .chapter-title { font-family: 'Marcellus SC', serif; color: var(--primary-color); font-size: clamp(1.4rem, 4vw, 2rem); margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); line-height: 1.3; }
+        .chapter-subtitle { color: var(--light-text); font-style: italic; font-size: clamp(0.95rem, 2.5vw, 1.1rem); margin-top: 0.5rem; line-height: 1.5; }
+
+        .scroll-content {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), var(--parchment));
+            padding: 3rem; border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            border: 1px solid rgba(184,134,11,0.3); margin-bottom: 2rem;
+        }
+        .scroll-content p { margin-bottom: 1.5rem; font-size: clamp(0.95rem, 2vw, 1.05rem); line-height: 1.9; text-align: justify; color: var(--dark-text); }
+        .scroll-content h3 { color: var(--primary-color); margin-top: 2rem; margin-bottom: 1rem; font-size: clamp(1.05rem, 3vw, 1.3rem); font-family: 'Marcellus SC', serif; border-bottom: 2px solid var(--secondary-color); padding-bottom: 0.5rem; line-height: 1.4; }
+        .scroll-content ul { margin: 1.5rem 0 1.5rem 2rem; list-style: none; }
+        .scroll-content li { margin-bottom: 1rem; padding-left: 1.5rem; position: relative; line-height: 1.8; }
+        .scroll-content li:before { content: "🏰"; position: absolute; left: 0; font-size: 0.9rem; }
+        .scroll-content ul ul { margin-top: 1rem; }
+        .scroll-content blockquote {
+            margin: 1.5rem 0; padding: 1.2rem 1.5rem;
+            background: rgba(184,134,11,0.08);
+            border-left: 4px solid var(--secondary-color);
+            border-radius: 0 8px 8px 0;
+            font-style: italic; color: var(--accent-color);
+            font-size: clamp(0.95rem, 2vw, 1.1rem); line-height: 1.9;
+        }
+        .scroll-content blockquote .translation { display: block; margin-top: 0.5rem; font-style: normal; color: var(--light-text); font-size: 0.92em; }
+
+        /* ── Luminary Card ── */
+        .luminary-card {
+            background: linear-gradient(135deg, rgba(139,0,0,0.04), rgba(184,134,11,0.08));
+            border: 2px solid rgba(184,134,11,0.4);
+            border-radius: 10px; padding: 1.8rem 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+        }
+        .luminary-card h4 {
+            font-family: 'Marcellus SC', serif;
+            color: var(--primary-color);
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            margin-bottom: 0.8rem;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .luminary-card p { margin-bottom: 1rem; font-size: clamp(0.92rem, 1.9vw, 1rem); line-height: 1.9; }
+
+        /* ── Table Styles ── */
+        .scroll-content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: clamp(0.78rem, 1.6vw, 0.9rem); box-shadow: 0 4px 14px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; }
+        .scroll-content table thead tr { background: linear-gradient(135deg, var(--primary-color), #A00000); }
+        .scroll-content table th { color: white; padding: 1rem 1.2rem; text-align: left; font-family: 'Marcellus SC', serif; font-size: clamp(0.82rem, 1.8vw, 0.98rem); font-weight: bold; letter-spacing: 0.5px; }
+        .scroll-content table td { padding: 0.85rem 1.2rem; border-bottom: 1px solid rgba(184,134,11,0.2); vertical-align: top; line-height: 1.75; color: var(--dark-text); }
+        .scroll-content table tr:last-child td { border-bottom: none; }
+        .scroll-content table tr:nth-child(even) td { background-color: rgba(184,134,11,0.05); }
+        .scroll-content table tr:hover td { background-color: rgba(139,0,0,0.05); transition: background-color 0.2s ease; }
+        .scroll-content table td:first-child { font-weight: bold; color: var(--primary-color); font-size: 0.9em; }
+
+        /* ── Lineage Chain styling ── */
+        .lineage-chain { font-size: 0.88em; color: var(--light-text); font-style: italic; }
+        .lineage-chain strong { color: var(--primary-color); font-style: normal; }
+
+        /* ── Language Content ── */
+        .lang-content { display: none; }
+        .lang-content.active { display: block; }
+
+        /* ── Footer ── */
+        footer { background-color: var(--accent-color); color: var(--light-parchment); padding: 3rem 0 1.5rem; text-align: center; margin-top: 4rem; border-top: 3px solid var(--secondary-color); }
+        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .footer-slogan { font-family: 'Marcellus SC', serif; font-size: 1rem; color: var(--secondary-color); margin: 1rem 0; font-weight: bold; }
+        .copyright { margin-top: 1.5rem; font-size: 0.9rem; color: rgba(248,241,224,0.8); }
+        .social-links { margin: 1.5rem 0; }
+        .social-links a { color: var(--light-parchment); font-size: 1.3rem; margin: 0 0.7rem; transition: all 0.3s ease; display: inline-block; }
+        .social-links a:hover { color: var(--secondary-color); transform: translateY(-3px); }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            body { padding-top: 90px; }
+            .header-container { flex-direction: row; gap: 0.5rem; padding: 0.5rem 0.8rem; }
+            .logo { flex: 1; min-width: 0; gap: 0.4rem; }
+            .logo h2 { font-size: clamp(0.95rem, 2.5vw, 1.2rem); }
+            .logo p { display: none; }
+            .chapter-nav-container { gap: 0.3rem; padding: 0 0.5rem; }
+            .chapter-btn { padding: 0.35rem 0.5rem; font-size: clamp(0.58rem, 1.3vw, 0.68rem); }
+            .content-wrapper { padding: 1rem; }
+            .scroll-content { padding: 1.4rem; }
+            .chapter-header { padding: 1.5rem 0.8rem; margin-bottom: 1.5rem; }
+            .back-btn { padding: 0.4rem 0.7rem; font-size: 0.7rem; min-height: 36px; }
+            .back-btn i { display: none; }
+            .lang-toggle-btn { padding: 0.35rem 0.6rem; font-size: 0.65rem; min-height: 36px; }
+            .lang-toggle-btn i { display: none; }
+            .luminary-card { padding: 1.2rem; }
+        }
+        @media (max-width: 576px) {
+            body { padding-top: 80px; font-size: 14px; }
+            .header-container { padding: 0.4rem 0.5rem; gap: 0.4rem; }
+            .logo { flex: 1; min-width: 0; }
+            .logo h2 { font-size: clamp(0.9rem, 3vw, 1.1rem); }
+            .back-btn { padding: 0.35rem 0.6rem; font-size: 0.65rem; min-height: 36px; }
+            .lang-toggle-btn { padding: 0.3rem 0.5rem; font-size: 0.6rem; min-height: 36px; }
+            .chapter-nav-container { gap: 0.2rem; padding: 0 0.3rem; }
+            .chapter-btn { padding: 0.3rem 0.35rem; font-size: 0.55rem; min-height: 34px; flex: 1; }
+            .chapter-title { font-size: clamp(1.1rem, 4.5vw, 1.5rem); }
+            .chapter-subtitle { font-size: clamp(0.78rem, 2vw, 0.88rem); }
+            .content-wrapper { padding: 0.7rem; }
+            .scroll-content { padding: 1rem; border-radius: 6px; margin-bottom: 1rem; }
+            .scroll-content p { font-size: clamp(0.85rem, 1.6vw, 0.9rem); line-height: 1.75; margin-bottom: 0.8rem; }
+            .scroll-content h3 { font-size: clamp(0.92rem, 3vw, 1.05rem); margin-top: 1.2rem; }
+            .chapter-header { padding: 1.2rem 0.8rem; margin-bottom: 1.2rem; border-radius: 6px; }
+            .chapter-number { font-size: 0.82rem; margin-bottom: 0.4rem; }
+            .scroll-content table { display: block; overflow-x: auto; }
+            .scroll-content table td:first-child { min-width: 110px; }
+            .luminary-card { padding: 1rem; }
+        }
+
+        @keyframes slideInFromLeft { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+        .back-btn { animation: slideInFromLeft 0.5s ease; }
+        @keyframes slideInFromRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+        .lang-toggle-btn { animation: slideInFromRight 0.5s ease; }
+    </style>
+</head>
+<body>
+
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h2><i class="fas fa-book-open"></i> Narauni Heritage</h2>
+                <p>नरौनी विरासत</p>
+            </div>
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Home</span>
+            </a>
+            <div class="language-toggle">
+                <button class="lang-toggle-btn active" id="langToggleBtn">
+                    <i class="fas fa-globe"></i>
+                    <span id="langToggleText">हिंदी</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section id="heritage">
+        <div class="content-wrapper">
+            <div class="content-container">
+
+                <!-- ══ Chapter Navigation ══ -->
+                <div class="chapter-nav">
+                    <div class="chapter-nav-container">
+                        <button class="chapter-btn active" data-chapter="1">अध्याय १ — उद्गम &amp; प्रवास</button>
+                        <button class="chapter-btn" data-chapter="2">अध्याय २ — मरोवा गढ़ राजवंश</button>
+                        <button class="chapter-btn" data-chapter="3">अध्याय ३ — विस्तार &amp; विरासत</button>
+                        <button class="chapter-btn" data-chapter="4">अध्याय ४ — टिकरी के प्रमुख व्यक्तित्व</button>
+                        <button class="chapter-btn" data-chapter="5">अध्याय ५ — कौन कहाँ गए</button>
+                    </div>
+                </div>
+
+
+                <!-- ════════════════════════════════════════ -->
+                <!-- CHAPTER 1 — ORIGINS & MIGRATION         -->
+                <!-- ════════════════════════════════════════ -->
+                <div class="chapter-content active" data-chapter="1">
+                    <div class="chapter-header">
+                        <div class="chapter-number">अध्याय १ / Chapter 1</div>
+                        <h2 class="chapter-title">कुल का उद्गम — बांसडीह से मरोवा गढ़ तक</h2>
+                        <p class="chapter-subtitle">जब परिहार वंश की एक धारा बांसडीह से पूरब की ओर मुड़ी | When a Stream of the Parihar Lineage Turned Eastward from Bansdih</p>
+                    </div>
+
+                    <div class="scroll-content">
+
+                        <!-- HINDI -->
+                        <div class="lang-content active" data-lang="hi">
+                            <h3>कुल की पहचान और ऐतिहासिक पृष्ठभूमि</h3>
+                            <p>नरावनी (नरौनी) राजपूत मूल रूप से <strong>प्रतिहार (परिहार) राजपूत राजवंश</strong> की एक अत्यंत प्रतिष्ठित उप-शाखा हैं, जो भारत के चार प्रमुख <strong>अग्निवंशी</strong> वंशों में से एक है। ऐतिहासिक रूप से, नरावनी पहचान की जड़ें मध्य प्रदेश में स्थित ऐतिहासिक <strong>नरवरगढ़ किले</strong> से जुड़ी हैं, जिसे प्राचीन काल में <em>नलपुर</em> कहा जाता था।</p>
+                            <p>मध्यकाल में क्षेत्रीय संघर्षों, सामरिक आवश्यकताओं और साम्राज्यों के पुनर्गठन के कारण, नरावनी राजपूतों की विभिन्न शाखाएं अपने अद्वितीय शौर्य, सांस्कृतिक गौरव और वंशावली को संजोए हुए पूर्व की ओर बढ़ीं। इसी महान शृंखला की एक कड़ी इस वंश को बलिया से होते हुए बिहार के औरंगाबाद जिले तक ले गई — जहाँ इसने एक नई और स्वतंत्र पहचान स्थापित की।</p>
+
+                            <h3>बांसडीह से पूर्व की ओर महाप्रयाण</h3>
+                            <p>पारंपरिक इतिहास और क्षेत्रीय साक्ष्यों के अनुसार, नरावनी राजवंश की इस विशिष्ट शाखा ने उत्तर प्रदेश से बिहार की ओर एक दूरदर्शी और रणनीतिक प्रवासन किया। यह गौरवशाली वंश परंपरा मूल रूप से उत्तर प्रदेश के <strong>बलिया जिले</strong> के ऐतिहासिक क्षेत्र <strong>बांसडीह</strong> से आगे बढ़ी थी, और यहीं से इस शाखा की पूरब की ओर की यात्रा का आरंभ हुआ।</p>
+
+                            <h3>मरोवा गढ़ — सोन नदी के तट पर एक नया अध्याय</h3>
+                            <p>क्षेत्रीय सीमाओं को पार कर, इस कुल के पूर्वजों ने बिहार के औरंगाबाद जिले में प्रवेश किया और <strong>मरोवा गढ़</strong> को अपना मुख्य केंद्र व पहली अभेद्य गढ़ी (किला) बनाया। यहाँ पूर्वजों ने लंबे समय तक रहकर अपनी सैन्य और प्रशासनिक स्थिति को सुदृढ़ किया।</p>
+                            <p>मरोवा गढ़ वर्तमान में <strong>बिहार के औरंगाबाद जिले के ओबरा तहसील (ब्लॉक)</strong> के अंतर्गत स्थित है। सोन नदी के उपजाऊ मैदानी क्षेत्र में स्थित और पुनपुन व अद्री जैसी क्षेत्रीय नदियों से घिरे ओबरा के इस भूभाग ने पूर्वजों को एक समृद्ध, कृषि-अनुकूल और सामरिक दृष्टि से सुरक्षित साम्राज्य स्थापित करने का बेहतरीन अवसर दिया।</p>
+                        </div>
+
+                        <!-- ENGLISH -->
+                        <div class="lang-content" data-lang="en">
+                            <h3>Clan Identity and Historical Background</h3>
+                            <p>The Narauni Rajputs are a highly distinguished sub-clan of the <strong>Parihar (Pratihar) Rajput dynasty</strong>, one of the four principal <strong>Agnivanshi</strong> clans of India. The foundational roots of the Narauni identity are deeply intertwined with the historic <strong>Narwar Fort (Narwargadh)</strong>, located in present-day Madhya Pradesh and known anciently as <em>Nalapura</em>.</p>
+                            <p>During the medieval period, driven by regional geopolitical conflicts and the reorganisation of kingdoms, various branches of the Narauni Rajputs migrated eastward across Northern India, carrying with them their distinct martial legacy, cultural pride, and genealogical lineage. One thread of this great migration carried the clan from Ballia all the way to the Aurangabad district of Bihar — where it established a new and independent identity of its own.</p>
+
+                            <h3>The Great Migration Eastward from Bansdih</h3>
+                            <p>According to ancestral accounts and regional history, this specific branch of the Narauni dynasty undertook a forward-looking and strategic migration from Uttar Pradesh into Bihar. This glorious lineage originally set out from <strong>Bansdih</strong>, a historic locality in the <strong>Ballia District</strong> of Uttar Pradesh, and it was from here that the branch's eastward journey began.</p>
+
+                            <h3>Marowa Garh — A New Chapter on the Banks of the Son</h3>
+                            <p>Moving across regional borders, the ancestors entered the Aurangabad district of Bihar and established their chief fortress and first impregnable stronghold at <strong>Marowa Garh</strong> (<em>Marowa Gadh</em>). Here, the ancestors remained for generations, reinforcing their military and administrative presence.</p>
+                            <p>Marowa Garh is situated within the <strong>Obra Tehsil (Block) of Aurangabad District, Bihar</strong>. Located on the fertile plains of the Son river and flanked by regional rivers such as the Punpun and Adri, this landscape provided the ancestors with an exceptionally resourceful, agriculturally rich, and strategically secure foundation for a lasting ancestral estate.</p>
+                        </div>
+
+                    </div>
+                </div><!-- end chapter 1 -->
+
+
+                <!-- ════════════════════════════════════════ -->
+                <!-- CHAPTER 2 — THE DYNASTY OF MAROWA GARH  -->
+                <!-- ════════════════════════════════════════ -->
+                <div class="chapter-content" data-chapter="2">
+                    <div class="chapter-header">
+                        <div class="chapter-number">अध्याय २ / Chapter 2</div>
+                        <h2 class="chapter-title">मरोवा गढ़ का राजवंश — बाबू डंबर सिंह और तीन प्रतापी पुत्र</h2>
+                        <p class="chapter-subtitle">तीन पुत्रों ने रचे तीन जागीर — टिकरी, कोना और आशा बिगहा | Three Sons, Three Estates — Tikri, Kona &amp; Asha Bigha</p>
+                    </div>
+
+                    <div class="scroll-content">
+
+                        <!-- HINDI -->
+                        <div class="lang-content active" data-lang="hi">
+                            <h3>बाबू डंबर सिंह — मरोवा गढ़ के मूल पुरुष</h3>
+                            <p>मरोवा गढ़ को अपना मुख्य केंद्र बनाने वाले इस शाखा के मूल पुरुष <strong>बाबू डंबर सिंह</strong> थे। उनके कुशल नेतृत्व में इस नए क्षेत्र में नरावनी वंश सामाजिक और राजनीतिक रूप से पूरी तरह स्थापित हुआ। मरोवा गढ़ के इस केंद्रीय गढ़ से ही आगे चलकर नरावनी राजवंश का विस्तार औरंगाबाद के <strong>रफ़ीगंज तहसील</strong> की ओर हुआ।</p>
+
+                            <h3>तीन पुत्र, तीन जागीर</h3>
+                            <p>बाबू डंबर सिंह जी के तीन प्रतापी पुत्रों — <strong>भूप सिंह</strong>, <strong>आशा सिंह</strong> और <strong>तारा सिंह</strong> — ने विभिन्न दिशाओं में जाकर तीन स्वतंत्र और ऐतिहासिक जागीरों की स्थापना की। नीचे दी गई तालिका इन तीनों शाखाओं की वंशावली और उत्तराधिकार का सार प्रस्तुत करती है:</p>
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>पूर्वज (बाबू डंबर सिंह के पुत्र)</th>
+                                        <th>स्थापित मुख्य जागीर / गाँव</th>
+                                        <th>वंशावली एवं उत्तराधिकार विशेष</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>बाबू भूप सिंह</td>
+                                        <td>टिकरी गाँव</td>
+                                        <td>इन्होंने परिवार की सबसे बड़ी शाखा की नींव रखी। इनके तीन पुत्र हुए: दयाल सिंह, टीका सिंह और सुंदर सिंह। इनके पुत्र टीका सिंह के नाम पर ही इस गाँव का स्थायी नाम <strong>'टिकरी'</strong> पड़ा।</td>
+                                    </tr>
+                                    <tr>
+                                        <td>बाबू तारा सिंह</td>
+                                        <td>कोना गाँव</td>
+                                        <td>इन्होंने कोना शाखा की स्थापना की। कालांतर में इनके प्रतापी वंशज कोन सिंह के नाम पर इस गाँव का नाम 'कोना गाँव' के रूप में प्रसिद्ध हुआ।</td>
+                                    </tr>
+                                    <tr>
+                                        <td>बाबू आशा सिंह</td>
+                                        <td>आशा बिगहा</td>
+                                        <td>इन्होंने 'आशा बिगहा' गाँव की स्थापना की। बाबू आशा सिंह जी का कोई पुत्र नहीं था, इसलिए उन्होंने अपनी पुत्री का विवाह चौहान राजपूत वंश में किया। आज उनके वही चौहान वंशज इस गाँव में नरावनी विरासत को संभालते हुए निवास करते हैं।</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- ENGLISH -->
+                        <div class="lang-content" data-lang="en">
+                            <h3>Babu Dambar Singh — The Founding Patriarch of Marowa Garh</h3>
+                            <p>The patriarch who anchored this branch at Marowa Garh was <strong>Babu Dambar Singh</strong>. Under his capable leadership, the Narauni clan established a strong socio-political and administrative footprint in this new territory. It was from this central stronghold of Marowa Garh that the dynasty's expansion toward the <strong>Rafiganj Tehsil</strong> of Aurangabad would later begin.</p>
+
+                            <h3>Three Sons, Three Estates</h3>
+                            <p>Babu Dambar Singh's three illustrious sons — <strong>Bhoop Singh</strong>, <strong>Asha Singh</strong>, and <strong>Tara Singh</strong> — moved outward in different directions and established three distinct, independent ancestral estates. The table below summarises the lineage and succession of each of these three branches:</p>
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Patriarch (Son of Babu Dambar Singh)</th>
+                                        <th>Primary Estate Established</th>
+                                        <th>Lineage &amp; Succession Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Babu Bhoop Singh</td>
+                                        <td>Tikri Gaon</td>
+                                        <td>Established the largest branch of the family. He had three sons: Dayal Singh, Tika Singh, and Sundar Singh. The village was permanently named <strong>'Tikri'</strong> in honour of his son, Tika Singh.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Babu Tara Singh</td>
+                                        <td>Kona Gaon</td>
+                                        <td>Established the Kona branch. Over time, the village gained its definitive name 'Kona Gaon' from his prominent descendant, Kon Singh.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Babu Asha Singh</td>
+                                        <td>Asha Bigha</td>
+                                        <td>Established the 'Asha Bigha' estate. Having no male heirs, he married his daughter into the Chauhan Rajput clan. Her Chauhan descendants continue to reside there today, preserving the Narauni heritage.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div><!-- end chapter 2 -->
+
+
+                <!-- ════════════════════════════════════════════════ -->
+                <!-- CHAPTER 3 — EXPANSION, LINEAGE & LIVING LEGACY  -->
+                <!-- ════════════════════════════════════════════════ -->
+                <div class="chapter-content" data-chapter="3">
+                    <div class="chapter-header">
+                        <div class="chapter-number">अध्याय ३ / Chapter 3</div>
+                        <h2 class="chapter-title">क्षेत्रीय विस्तार, वंशावली और जीवंत विरासत</h2>
+                        <p class="chapter-subtitle">औरंगाबाद के गाँव-गाँव में फैली नरावनी पहचान | The Narauni Identity Woven Across the Villages of Aurangabad</p>
+                    </div>
+
+                    <div class="scroll-content">
+
+                        <!-- HINDI -->
+                        <div class="lang-content active" data-lang="hi">
+                            <h3>टिकरी शाखा — बाबू भूप सिंह के वंशज</h3>
+                            <p>भूप सिंह जी के तीनों पुत्र — <strong>दयाल सिंह</strong>, <strong>टीका सिंह</strong> और <strong>सुंदर सिंह</strong> — प्रारंभ में मूल टिकरी गाँव में ही संयुक्त रूप से रहे। आज भी इनके वंशजों की एक बहुत बड़ी आबादी टिकरी में गरिमा के साथ निवास करती है। कालांतर में, इस परिवार का और विस्तार हुआ और कुछ उप-शाखाएं निम्नलिखित क्षेत्रों में जाकर स्थायी रूप से बस गईं:</p>
+                            <ul>
+                                <li><strong>कौआ खाप और बंचर खुर्द:</strong> जनसांख्यिकीय वृद्धि के कारण इस परिवार के कई सदस्य पास के गाँवों — कौआ खाप और बंचर खुर्द — में जाकर स्थापित हो गए।</li>
+                                <li><strong>देव-नीमा:</strong> इसी वंश परंपरा के कुछ परिवार आगे चलकर औरंगाबाद के ऐतिहासिक नगर देव (जो अपने त्रेतायुगीन सूर्य मंदिर के लिए प्रसिद्ध है) के समीप स्थित नीमा गाँव में जाकर स्थापित हुए, जिसे आज सामाजिक रूप से 'देव-नीमा' कहा जाता है।</li>
+                                <li><strong>बघोई:</strong> इसके अतिरिक्त, इस प्रतापी शाखा का एक हिस्सा पास के बघोई गाँव में भी जाकर स्थापित हुआ और वहाँ अपनी ज़मींदारी का विस्तार किया।</li>
+                            </ul>
+
+                            <h3>कोना शाखा — बाबू तारा सिंह के वंशज</h3>
+                            <p>बाबू तारा सिंह जी के वंशजों ने <strong>कोना गाँव</strong> को अपनी शक्ति और संस्कृति का मुख्य केंद्र बनाए रखा। पीढ़ियों के विस्तार के साथ, कोना गाँव की इस शाखा के भी कुछ परिवार <strong>खरोखर गाँव</strong> में जाकर बस गए। इसके परिणामस्वरूप, खरोखर गाँव में भूप सिंह और तारा सिंह — दोनों भाइयों के वंशजों का एक साझा और सुदृढ़ सामाजिक ताना-बाना तैयार हुआ।</p>
+
+                            <h3>वंशावली संरचना और जीवंत विरासत</h3>
+                            <p>मरोवा गढ़ से प्रारंभ होकर औरंगाबाद के विभिन्न क्षेत्रों में विस्तारित होने वाले इस वंश क्रम का ढांचा मुख्य रूप से इस प्रकार व्यवस्थित है:</p>
+                            <ul>
+                                <li><strong>बाबू डंबर सिंह (मरोवा गढ़)</strong> — शाखा के मूल पुरुष एवं मरोवा गढ़ी के संस्थापक
+                                    <ul>
+                                        <li><strong>बाबू भूप सिंह (टिकरी)</strong> — पुत्र: दयाल सिंह, टीका सिंह और सुंदर सिंह; टीका सिंह के नाम पर गाँव का नाम 'टिकरी' पड़ा; वंश टिकरी, कौआ खाप, बंचर खुर्द, देव-नीमा और बघोई में विस्तारित हुआ।</li>
+                                        <li><strong>बाबू तारा सिंह (कोना)</strong> — वंश में प्रसिद्ध 'कोन सिंह' हुए, जिनके नाम पर गाँव का नाम 'कोना गाँव' पड़ा; वंश खरोखर में भी विस्तारित हुआ।</li>
+                                        <li><strong>बाबू आशा सिंह (आशा बिगहा)</strong> — कोई पुत्र न होने पर पुत्री का विवाह चौहान राजपूत वंश में हुआ; उनके चौहान वंशज आज भी आशा बिगहा में नरावनी विरासत को संभाले हुए हैं।</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p>मरोवा गढ़ की ऐतिहासिक भूमि से शुरू हुआ यह सफर आज औरंगाबाद जिले के कई गाँवों में अपनी साख और सामाजिक प्रतिष्ठा के साथ फल-फूल रहा है। बाँसडीह (बलिया) की जड़ों से लेकर ओबरा और रफ़ीगंज के मैदानों तक, नरावनी राजपूतों का यह इतिहास केवल भौगोलिक प्रवासन की गाथा नहीं है, बल्कि यह विपरीत परिस्थितियों में अपनी संस्कृति, क्षत्रिय स्वाभिमान और वंशानुगत एकता को अक्षुण्ण रखने का एक जीवंत प्रमाण है।</p>
+                        </div>
+
+                        <!-- ENGLISH -->
+                        <div class="lang-content" data-lang="en">
+                            <h3>The Tikri Lineage — Descendants of Babu Bhoop Singh</h3>
+                            <p>The three sons of Bhoop Singh — <strong>Dayal Singh</strong>, <strong>Tika Singh</strong>, and <strong>Sundar Singh</strong> — initially co-habited within the main Tikri estate. Today, a large population of their descendants continues to reside in Tikri with great dignity. Over time, further outward expansions led to the establishment of distinct lineage pockets in the following areas:</p>
+                            <ul>
+                                <li><strong>Kauaa Khap &amp; Banchar Khurd:</strong> Due to generational growth, many members of this family moved to settle in Kauaa Khap and Banchar Khurd, two nearby agriculturally prosperous villages.</li>
+                                <li><strong>Deo-Nima:</strong> Certain families of this lineage later moved further to settle near the historic town of Deo (renowned for its ancient Treta-Yuga era Sun Temple), establishing a prominent lineage pocket in Nima village, known socially as 'Deo-Nima'.</li>
+                                <li><strong>Baghoi:</strong> Additionally, a segment of this prominent branch extended outward to establish a permanent presence in the neighbouring village of Baghoi.</li>
+                            </ul>
+
+                            <h3>The Kona Lineage — Descendants of Babu Tara Singh</h3>
+                            <p>The descendants of Babu Tara Singh firmly preserved <strong>Kona Gaon</strong> as the central seat of their power and culture. With the expansion of the family over generations, certain branches of the Kona lineage also moved to settle permanently in <strong>Kharokhar village</strong>. As a result, Kharokhar developed a shared and robust social fabric comprising descendants of both the Bhoop Singh and Tara Singh lines.</p>
+
+                            <h3>Lineage Structure &amp; The Living Legacy</h3>
+                            <p>The structural framework of this lineage, branching outward from Marowa Garh into the various territories of Aurangabad, is organised as follows:</p>
+                            <ul>
+                                <li><strong>Babu Dambar Singh (Marowa Garh)</strong> — the founding patriarch and founder of Marowa Garh
+                                    <ul>
+                                        <li><strong>Babu Bhoop Singh (Tikri)</strong> — sons: Dayal Singh, Tika Singh, and Sundar Singh; the village was named 'Tikri' after Tika Singh; this lineage expanded into Tikri, Kauaa Khap, Banchar Khurd, Deo-Nima, and Baghoi.</li>
+                                        <li><strong>Babu Tara Singh (Kona)</strong> — his lineage's prominent descendant Kon Singh gave the village its name, 'Kona Gaon'; this lineage also expanded into Kharokhar.</li>
+                                        <li><strong>Babu Asha Singh (Asha Bigha)</strong> — having no male heirs, his daughter was married into the Chauhan Rajput clan; her Chauhan descendants continue to preserve the Narauni heritage in Asha Bigha to this day.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p>The grand journey that commenced from the historic land of Marowa Garh continues to thrive today across various villages of Aurangabad, carrying immense social prestige and credibility. From the ancestral roots in Bansdih (Ballia) to the plains of Obra and Rafiganj, this history stands as a living testament to an unyielding spirit, Kshatriya self-respect, and ancestral unity maintained through centuries of change.</p>
+                        </div>
+
+                    </div>
+                </div><!-- end chapter 3 -->
+
+
+                <!-- ════════════════════════════════════════════════ -->
+                <!-- CHAPTER 4 — LUMINARIES OF TIKRI                 -->
+                <!-- ════════════════════════════════════════════════ -->
+                <div class="chapter-content" data-chapter="4">
+                    <div class="chapter-header">
+                        <div class="chapter-number">अध्याय ४ / Chapter 4</div>
+                        <h2 class="chapter-title">टिकरी के प्रमुख व्यक्तित्व</h2>
+                        <p class="chapter-subtitle">बाबू दुर्गा सिंह जी और बाबू नेहल सिंह जी की अमर विरासत | The Immortal Legacy of Babu Durga Singh Ji &amp; Babu Nehal Singh Ji</p>
+                    </div>
+
+                    <div class="scroll-content">
+
+                        <!-- HINDI -->
+                        <div class="lang-content active" data-lang="hi">
+
+                            <h3>बाबू दुर्गा सिंह जी — टिकरी के प्रतापी योद्धा</h3>
+
+                            <div class="luminary-card">
+                                <h4><i class="fas fa-shield-alt" style="color:var(--secondary-color)"></i> बाबू दुर्गा सिंह जी एवं उनके भाई</h4>
+                                <p>बाबू दुर्गा सिंह जी अपने काल के असाधारण रूप से साहसी और प्रतापी योद्धा थे। इनकी वीरता की कथाएँ पीढ़ियों से परिवार की स्मृतियों में अमर हैं।</p>
+                                <p>ये और इनके भाई गया जिले में स्थित <strong>भूमिहार राजाओं के शक्तिशाली टेकारी राज्य</strong> के सामने भी निर्भयतापूर्वक खड़े रहते थे। इनकी स्थापित नीति यह थी कि टिकरी क्षेत्र से होकर गुजरने वाले टेकारी राज्य के किसी भी व्यक्ति को ये सहज नहीं जाने देते थे — जाने से पहले उसे कोई न कोई काम अवश्य करना पड़ता था। इस प्रकार ये अपने क्षेत्र का स्वाभिमान और प्रभुत्व बनाए रखते थे।</p>
+                            </div>
+
+                            <h3>टेकारी राज्य से ऐतिहासिक टकराव</h3>
+                            <p>जब यह बात टेकारी के मंत्रियों के माध्यम से राजा तक पहुँची, तब एक और विवाद भी चल रहा था। एक स्थान पर <strong>चाहका</strong> (एक पारंपरिक निर्माण कार्य) बनाया जाना था, जिसे बाबू दुर्गा सिंह जी और उनके भाई बनने नहीं दे रहे थे — यद्यपि वह भूभाग टेकारी राज्य की अधिकार-सीमा में आता था।</p>
+                            <p>टेकारी के राजा ने बाबू दुर्गा सिंह और उनके भाइयों को सीधे अपने महल में बुलाया। जब ये वहाँ उपस्थित हुए तो राजा ने उन्हें धमकाते हुए कहा —</p>
+
+                            <blockquote>
+                                "तुम लोग ऐसा काम करते हो! अभी यहीं मरवा देता हूँ।"
+                            </blockquote>
+
+                            <p>इस पर बाबू दुर्गा सिंह जी और उनके भाइयों ने बिना किसी भय के, अविचल निर्भयता से उत्तर दिया —</p>
+
+                            <blockquote>
+                                "हम पाँच भाई हैं। खुले मैदान में हमसे मुकाबला करके देख लीजिए — घर में बुलाकर धोखे से मरवाना तो कोई भी कर सकता है।"
+                                <span class="translation">"We are five brothers. Come face us on open ground and test your strength. As for killing someone by luring them into your home under the cover of hospitality — anyone can manage that."</span>
+                            </blockquote>
+
+                            <p>यह साहसपूर्ण और स्पष्टवादी उत्तर सुनकर राजा अत्यंत प्रभावित और प्रसन्न हुए। राजा ने कहा —</p>
+                            <blockquote>"यदि तुम वहाँ चाहका बनवा दो, तो मैं तुम्हें वीर मानूँगा।"</blockquote>
+                            <p>इन वीरों ने सहर्ष स्वीकृति दी और वह चाहका बनवा दिया।</p>
+
+                            <h3>देव-नीमा में १,५०० बीघा का उपहार</h3>
+                            <p>इस पराक्रम से अत्यंत प्रसन्न होकर, टेकारी राज्य के राजा ने <strong>देव-नीमा में १,५०० बीघा भूमि</strong> उपहार स्वरूप प्रदान की। बाबू दुर्गा सिंह जी और उनके भाइयों ने उस विशाल भूदान में से <strong>अधिकांश भाग दान कर दिया</strong> और कुछ भाग अपने पास रखा। वही शेष भूमि आज टिकरी से देव-नीमा जाकर बसे नरावनी राजपूत वंशज उपयोग करते हैं — वह भूमि उन्हीं सबकी है।</p>
+                            <p>बाबू दुर्गा सिंह जी के ही खानदान में आगे चलकर <strong>श्री रामकृत्यार्थ सिंह जी और उनके भाइयों</strong> ने भाड़वा हाई स्कूल की स्थापना एवं विकास में अपना महत्त्वपूर्ण ऐतिहासिक योगदान दिया।</p>
+
+                            <h3>बाबू नेहल सिंह जी और बाबू तोमर सिंह जी — टिकरी के जेठ रैयत</h3>
+
+                            <div class="luminary-card">
+                                <h4><i class="fas fa-crown" style="color:var(--secondary-color)"></i> बाबू नेहल सिंह जी — जेठ रैयत, टिकरी</h4>
+                                <p><strong>जेठ रैयत</strong> अर्थात् गाँव के सबसे प्रमुख एवं वरिष्ठ भू-स्वामी, जिन्हें सामाजिक एवं प्रशासनिक नेतृत्व का सर्वोच्च सम्मान प्राप्त होता था।</p>
+                                <p>बाबू नेहल सिंह जी टिकरी गाँव के जेठ रैयत थे। उनके पश्चात् उनके सुयोग्य पुत्र <strong>बाबू तोमर सिंह जी</strong> इस गौरवशाली पद पर आसीन हुए और इस परंपरा को आगे बढ़ाया।</p>
+                            </div>
+
+                            <p>बाबू नेहल सिंह जी के ही खानदान में हुए — <strong>बाबू भगवती सिंह जी, श्री जियेन सिंह जी, श्री मुराद सिंह जी</strong> और <strong>श्री कालीचरण सिंह जी</strong>। इन सभी सम्मानित व्यक्तियों ने <strong>भाड़वा हाई स्कूल</strong> के लिए भूमि दान करके शिक्षा के क्षेत्र में अपना अमूल्य ऐतिहासिक योगदान दिया।</p>
+
+                            <p>श्री कालीचरण सिंह जी के पौत्र <strong>श्री नवल बिहारी सिंह जी</strong> अपने समय के अत्यंत चर्चित, सम्मानित एवं प्रतिष्ठित व्यक्तित्व थे। उनकी ख्याति और सामाजिक प्रतिष्ठा इतनी अधिक थी कि आज भी ग्रामवासी उन्हें <strong>"जैठ रैयत साहब"</strong> के नाम से गर्वपूर्वक स्मरण करते हैं।</p>
+
+                            <h3>चंदा पर — सामाजिक न्याय की भावना से भूमि दान</h3>
+                            <p>बाबू नेहल सिंह जी और बाबू दुर्गा सिंह जी के वंशजों की एक और महत्त्वपूर्ण एवं स्तुत्य पहल यह रही कि इन्होंने <strong>"चंदा पर"</strong> (एक स्थान जो आज इसी नाम से जाना जाता है) में भूमि दान दी — विशेष रूप से उन <strong>दलित परिवारों</strong> के लिए जो पीढ़ियों से इनके साथ काम करते आए थे। यह उदार कार्य उनकी सामाजिक संवेदनशीलता और मानवीय दृष्टि का प्रमाण है। इस पुण्य कार्य में अन्य व्यक्तियों का भी योगदान हो सकता है, जिनकी जानकारी अभी उपलब्ध नहीं है। जितनी जानकारी उपलब्ध हुई, वह यहाँ प्रस्तुत की गई है।</p>
+
+                        </div><!-- end Hindi ch4 -->
+
+                        <!-- ENGLISH -->
+                        <div class="lang-content" data-lang="en">
+
+                            <h3>Babu Durga Singh Ji — The Valiant Warrior of Tikri</h3>
+
+                            <div class="luminary-card">
+                                <h4><i class="fas fa-shield-alt" style="color:var(--secondary-color)"></i> Babu Durga Singh Ji and His Brothers</h4>
+                                <p>Babu Durga Singh Ji was a warrior of exceptional courage and formidable repute in his era. His tales of valour have been passed down through generations and remain vivid in the family's living memory.</p>
+                                <p>He and his brothers stood fearlessly before even the powerful <strong>Tekari Kingdom of Gaya district</strong>, administered by the Bhumihar chieftains. Their well-established practice was that no person from the Tekari Kingdom could pass through the Tikri territory without first completing a task or errand set by them — their way of asserting territorial pride and authority.</p>
+                            </div>
+
+                            <h3>The Historic Confrontation with the Tekari Kingdom</h3>
+                            <p>When this matter eventually reached the Tekari raja through his ministers, another dispute was simultaneously unfolding: a <strong>chahka</strong> (a traditional stone construction) needed to be built at a specific location, and Babu Durga Singh and his brothers were preventing this construction — even though the land in question fell within the Tekari Kingdom's jurisdiction.</p>
+                            <p>The Tekari raja summoned Babu Durga Singh and his brothers directly to his palace. Upon their arrival, the raja challenged them:</p>
+
+                            <blockquote>
+                                "You carry on with such conduct! I could have you killed right here and now."
+                            </blockquote>
+
+                            <p>Without flinching, Babu Durga Singh and his brothers replied with absolute composure:</p>
+
+                            <blockquote>
+                                "We are five brothers. Come face us on open ground and see what you can do — as for killing someone by luring them into your home under the cover of hospitality, that is something anyone can arrange."
+                                <span class="translation">हम पाँच भाई हैं। खुले मैदान में हमसे मुकाबला करके देख लीजिए — घर में बुलाकर धोखे से मरवाना तो कोई भी कर सकता है।</span>
+                            </blockquote>
+
+                            <p>Deeply impressed and moved by this bold and forthright reply, the raja said:</p>
+                            <blockquote>"If you allow the chahka to be built there, I will consider you true warriors."</blockquote>
+                            <p>The brothers agreed, and the chahka was duly built.</p>
+
+                            <h3>The Gift of 1,500 Bigha in Deo-Nima</h3>
+                            <p>Greatly pleased by this act of honour, the Tekari raja gifted <strong>1,500 bigha of land in Deo-Nima</strong> as a mark of recognition. Babu Durga Singh Ji and his brothers <strong>donated the vast majority of this land</strong> and retained a portion for themselves. That retained land is today used by the Narauni Rajput descendants who migrated from Tikri to settle in Deo-Nima — it belongs to all of them.</p>
+                            <p>In the lineage of Babu Durga Singh Ji, <strong>Shri Ramkritarth Singh Ji and his brothers</strong> made a distinguished historical contribution to the founding and development of Bhadwa High School.</p>
+
+                            <h3>Babu Nehal Singh Ji and Babu Tomar Singh Ji — The Jeth Raiyats of Tikri</h3>
+
+                            <div class="luminary-card">
+                                <h4><i class="fas fa-crown" style="color:var(--secondary-color)"></i> Babu Nehal Singh Ji — Jeth Raiyat of Tikri</h4>
+                                <p><strong>Jeth Raiyat</strong> — the most senior and principal landholder of the village, commanding the highest social and administrative respect in the community.</p>
+                                <p>Babu Nehal Singh Ji held this distinguished position in Tikri village. After him, his capable son <strong>Babu Tomar Singh Ji</strong> succeeded to this honoured position, carrying the tradition forward with equal distinction.</p>
+                            </div>
+
+                            <p>From the family of Babu Nehal Singh Ji: <strong>Babu Bhagwati Singh Ji, Shri Jiyen Singh Ji, Shri Murad Singh Ji</strong>, and <strong>Shri Kalicharan Singh Ji</strong> — all of these eminent individuals made a lasting and historic contribution to education by donating land to <strong>Bhadwa High School</strong>.</p>
+
+                            <p>Shri Kalicharan Singh Ji's grandson, <strong>Shri Nawal Bihari Singh Ji</strong>, was a widely celebrated and deeply respected personality of his time. Such was his standing and social esteem that the people of the village fondly remember him to this day by the honorary title of <strong>"Jaith Raiyat Saheb."</strong></p>
+
+                            <h3>Chanda Par — Land Donated for Social Justice</h3>
+                            <p>In a deeply humane and generous act, the descendants of Babu Nehal Singh Ji and Babu Durga Singh Ji donated land at the place now known as <strong>"Chanda Par"</strong> — specifically for the <strong>Dalit families</strong> who had worked and served alongside them for generations. This act stands as a lasting testament to their social sensitivity and compassionate vision. Other individuals may also have participated in this charitable act, though their details are not presently available. What has come to light has been recorded here faithfully.</p>
+
+                        </div><!-- end English ch4 -->
+
+                    </div>
+                </div><!-- end chapter 4 -->
+
+
+                <!-- ════════════════════════════════════════════════ -->
+                <!-- CHAPTER 5 — WHO WENT WHERE                      -->
+                <!-- ════════════════════════════════════════════════ -->
+                <div class="chapter-content" data-chapter="5">
+                    <div class="chapter-header">
+                        <div class="chapter-number">अध्याय ५ / Chapter 5</div>
+                        <h2 class="chapter-title">वंश विस्तार — टिकरी से कौन कहाँ गए</h2>
+                        <p class="chapter-subtitle">विभिन्न गाँवों में नई शाखाओं का उदय | The Rise of New Branches Across the Villages</p>
+                    </div>
+
+                    <div class="scroll-content">
+
+                        <!-- HINDI -->
+                        <div class="lang-content active" data-lang="hi">
+                            <h3>टिकरी से जाने वाले वंशजों का विवरण</h3>
+                            <p>नीचे दी गई तालिका में बाबू भूप सिंह जी की टिकरी शाखा से विभिन्न गाँवों में जाकर बसने वाले वंशजों का पूर्ण विवरण प्रस्तुत है। इसमें वंश परंपरा की यथासंभव पूर्ण और प्रामाणिक जानकारी दी गई है।</p>
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>गाँव (गंतव्य)</th>
+                                        <th>जाकर बसने वाले</th>
+                                        <th>वंश परंपरा (टिकरी से)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>कौआ खाप</td>
+                                        <td><strong>ठाकुर सिंह जी</strong> एवं <strong>छेदी सिंह जी</strong> (दोनों सगे भाई)</td>
+                                        <td><span class="lineage-chain">भूप सिंह → दयाल सिंह → <strong>परगन सिंह जी</strong> → ठाकुर सिंह / छेदी सिंह</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>देव-नीमा</td>
+                                        <td><strong>कामदेव सिंह जी</strong> एवं <strong>शिवराश्य सिंह जी</strong> (दोनों सगे भाई)</td>
+                                        <td><span class="lineage-chain">भूप सिंह → दयाल सिंह → <strong>दुर्गा सिंह जी</strong> → <strong>रामयाद सिंह जी</strong> → कामदेव सिंह / शिवराश्य सिंह</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>बंचर खुर्द</td>
+                                        <td><strong>जयनारायण सिंह जी</strong> एवं <strong>बीरेंद्र सिंह जी</strong> (दोनों सगे भाई)</td>
+                                        <td><span class="lineage-chain">भूप सिंह → … → नेहल सिंह → तोमर सिंह → <strong>रामाश्रेय सिंह जी</strong> → जयनारायण सिंह / बीरेंद्र सिंह</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>बघोई</td>
+                                        <td><strong>दिनेशर सिंह जी</strong></td>
+                                        <td><span class="lineage-chain">भूप सिंह → … → नेहल सिंह → श्री सिंह जी → <strong>सालिग्राम सिंह जी</strong> → दिनेशर सिंह</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>खरोखर</td>
+                                        <td><em>—</em></td>
+                                        <td><em>टिकरी से जाने वाले का नाम अभी ज्ञात नहीं है। जानकारी प्राप्त होते ही यहाँ अद्यतन किया जाएगा।</em></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p style="font-size:0.85em; color:var(--light-text); margin-top:0.5rem;">
+                                <strong>नोट:</strong> "…" (बिंदु) का अर्थ है कि नेहल सिंह जी और बाबू भूप सिंह जी के बीच की मध्यवर्ती पीढ़ियों का विवरण अभी अपेक्षित है। जानकारी उपलब्ध होते ही तालिका अद्यतन की जाएगी।
+                            </p>
+
+                            <h3>वंश विस्तार की दो मुख्य धाराएँ</h3>
+                            <p>यह संकलन स्पष्ट करता है कि बाबू भूप सिंह जी के वंशज मुख्यतः दो धाराओं में विस्तारित हुए —</p>
+                            <ul>
+                                <li><strong>बाबू दयाल सिंह जी की धारा:</strong> इस धारा के वंशज कौआ खाप (परगन सिंह जी के पुत्र) और देव-नीमा (दुर्गा सिंह जी → रामयाद सिंह जी के पुत्र) में जाकर बसे।</li>
+                                <li><strong>बाबू नेहल सिंह जी की धारा:</strong> इस धारा के वंशज बंचर खुर्द (तोमर सिंह → रामाश्रेय सिंह के पुत्र) और बघोई (श्री सिंह जी → सालिग्राम सिंह जी के पुत्र) में जाकर बसे।</li>
+                            </ul>
+                            <p>खरोखर में टिकरी से जाने वाले वंशज की जानकारी अभी अनुपलब्ध है और प्राप्त होते ही यहाँ सम्मिलित किया जाएगा। साथ ही, <strong>कोना गाँव</strong> (बाबू तारा सिंह जी की शाखा) के वंशज भी खरोखर में विस्तारित हुए, जिसका विवरण अध्याय ३ में प्रस्तुत है।</p>
+                            <p>यह जीवंत वंशावली आने वाली पीढ़ियों के लिए अपनी जड़ों से जुड़े रहने और पूर्वजों के पुरुषार्थ को नमन करने का एक पावन माध्यम है। यह संकलन एक जीवंत दस्तावेज़ है — जो समय के साथ और अधिक समृद्ध होता जाएगा।</p>
+                        </div><!-- end Hindi ch5 -->
+
+                        <!-- ENGLISH -->
+                        <div class="lang-content" data-lang="en">
+                            <h3>A Detailed Record of Tikri's Descendants Who Settled Elsewhere</h3>
+                            <p>The table below presents a complete and verified account of the descendants from the Tikri branch of Babu Bhoop Singh Ji who migrated and settled in various surrounding villages, along with their known lineage path.</p>
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Village (Destination)</th>
+                                        <th>Who Settled There</th>
+                                        <th>Lineage Path (from Tikri)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Kauaa Khap</td>
+                                        <td><strong>Thakur Singh Ji</strong> &amp; <strong>Chhedi Singh Ji</strong> (two brothers)</td>
+                                        <td><span class="lineage-chain">Bhoop Singh → Dayal Singh → <strong>Pargan Singh Ji</strong> → Thakur Singh / Chhedi Singh</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Deo-Nima</td>
+                                        <td><strong>Kamadev Singh Ji</strong> &amp; <strong>Shivarashya Singh Ji</strong> (two brothers)</td>
+                                        <td><span class="lineage-chain">Bhoop Singh → Dayal Singh → <strong>Durga Singh Ji</strong> → <strong>Ramyad Singh Ji</strong> → Kamadev Singh / Shivarashya Singh</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Banchar Khurd</td>
+                                        <td><strong>Jai Narayan Singh Ji</strong> &amp; <strong>Birendra Singh Ji</strong> (two brothers)</td>
+                                        <td><span class="lineage-chain">Bhoop Singh → … → Nehal Singh → Tomar Singh → <strong>Ramashrey Singh Ji</strong> → Jai Narayan Singh / Birendra Singh</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Baghoi</td>
+                                        <td><strong>Dineshwar Singh Ji</strong></td>
+                                        <td><span class="lineage-chain">Bhoop Singh → … → Nehal Singh → Shree Singh Ji → <strong>Saligram Singh Ji</strong> → Dineshwar Singh</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kharokhar</td>
+                                        <td><em>—</em></td>
+                                        <td><em>The name of the Tikri-branch settler in Kharokhar is not yet confirmed. This entry will be updated upon verification.</em></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <p style="font-size:0.85em; color:var(--light-text); margin-top:0.5rem;">
+                                <strong>Note:</strong> "…" (ellipsis) indicates that the intermediate generations between Nehal Singh Ji and Babu Bhoop Singh Ji are yet to be confirmed and will be filled in as information becomes available.
+                            </p>
+
+                            <h3>Two Main Streams of Lineage Expansion</h3>
+                            <p>This account clearly illustrates that the descendants of Babu Bhoop Singh Ji expanded primarily through two distinct streams:</p>
+                            <ul>
+                                <li><strong>Through Babu Dayal Singh Ji's line:</strong> Descendants settled in Kauaa Khap (the sons of Pargan Singh Ji) and Deo-Nima (Durga Singh Ji → Ramyad Singh Ji's sons).</li>
+                                <li><strong>Through Babu Nehal Singh Ji's line:</strong> Descendants settled in Banchar Khurd (Tomar Singh → Ramashrey Singh Ji's sons) and Baghoi (Shree Singh Ji → Saligram Singh Ji's son).</li>
+                            </ul>
+                            <p>Information about the Tikri-branch settlers in Kharokhar is yet to be confirmed and will be included here upon verification. Note also that descendants of the <strong>Kona Gaon branch</strong> (Babu Tara Singh Ji's lineage) separately expanded into Kharokhar, as detailed in Chapter 3.</p>
+                            <p>This living genealogy serves as a sacred medium for future generations to remain connected to their roots and honour the profound legacy of their ancestors. This compilation is a living document — one that will continue to grow richer and more complete with the passage of time.</p>
+                        </div><!-- end English ch5 -->
+
+                    </div>
+                </div><!-- end chapter 5 -->
+
+            </div><!-- end .content-container -->
+        </div><!-- end .content-wrapper -->
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-slogan">नरवरगढ़ से आए नरौनी | Warriors of Narwargadh</div>
+            <div class="social-links">
+                <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Narauni Rajput Heritage Foundation. All Rights Reserved.<br>
+                <a href="index.html" style="color: var(--light-parchment); text-decoration: none;">← Back to Home</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let currentLanguage = localStorage.getItem('preferredLanguage') || 'hi';
+            let currentChapter = '1';
+
+            const progressFill = document.getElementById('progressFill');
+            const header = document.querySelector('header');
+
+            const updateProgressBar = () => {
+                const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrollProgress = windowHeight > 0 ? (window.scrollY / windowHeight) * 100 : 0;
+                if (progressFill) progressFill.style.width = scrollProgress + '%';
+            };
+
+            const updateHeaderShadow = () => {
+                header.style.boxShadow = window.scrollY > 10
+                    ? '0 6px 16px rgba(139, 0, 0, 0.2)'
+                    : '0 2px 8px rgba(139, 0, 0, 0.1)';
+            };
+
+            // Language Toggle
+            const langToggleBtn = document.getElementById('langToggleBtn');
+            const langToggleText = document.getElementById('langToggleText');
+
+            const applyLanguage = (lang) => {
+                document.querySelectorAll('.lang-content').forEach(content => {
+                    content.classList.toggle('active', content.getAttribute('data-lang') === lang);
+                });
+                langToggleText.textContent = lang === 'hi' ? 'हिंदी' : 'English';
+                langToggleBtn.classList.toggle('active', lang === 'hi');
+            };
+
+            langToggleBtn.addEventListener('click', function () {
+                currentLanguage = currentLanguage === 'hi' ? 'en' : 'hi';
+                applyLanguage(currentLanguage);
+                localStorage.setItem('preferredLanguage', currentLanguage);
+            });
+
+            // Chapter Navigation
+            const chapterBtns = document.querySelectorAll('.chapter-btn');
+            const chapterContents = document.querySelectorAll('.chapter-content');
+
+            chapterBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const chapterNum = this.getAttribute('data-chapter');
+                    currentChapter = chapterNum;
+
+                    chapterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    chapterContents.forEach(content => content.classList.remove('active'));
+                    const selected = document.querySelector(`.chapter-content[data-chapter="${chapterNum}"]`);
+                    if (selected) selected.classList.add('active');
+
+                    const heritageSection = document.getElementById('heritage');
+                    if (heritageSection) {
+                        window.scrollTo({ top: heritageSection.offsetTop - 120, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Initialise
+            applyLanguage(currentLanguage);
+            window.addEventListener('scroll', updateProgressBar, { passive: true });
+            window.addEventListener('scroll', updateHeaderShadow, { passive: true });
+            updateProgressBar();
+            updateHeaderShadow();
+        });
+    </script>
+</body>
+</html>
